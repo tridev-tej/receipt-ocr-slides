@@ -242,7 +242,7 @@ a { color: var(--accent); }
             <div class="stat-card"><div class="stat-value green">318</div><div class="stat-label">Line Items</div></div>
             <div class="stat-card"><div class="stat-value" style="color:var(--cyan)">96.7%</div><div class="stat-label">OCR Confidence</div></div>
             <div class="stat-card"><div class="stat-value amber">94.9%</div><div class="stat-label">Mapping Rate</div></div>
-            <div class="stat-card"><div class="stat-value purple">340</div><div class="stat-label">Tests Passing</div></div>
+            <div class="stat-card"><div class="stat-value purple">340</div><div class="stat-label">Tests (unit + integration + edge)</div></div>
             <div class="stat-card"><div class="stat-value" style="color:var(--red)">73.7%</div><div class="stat-label">Avg Margin</div></div>
         </div>
     </div>
@@ -255,7 +255,7 @@ a { color: var(--accent); }
     <div class="slide-content">
         <div class="badge reveal">Architecture</div>
         <h2 class="reveal">8-Stage Async Pipeline</h2>
-        <p class="reveal" style="max-width:700px;margin-bottom:var(--element-gap)">Each receipt flows through typed stages with Pydantic contracts between them. Validation is separate from OCR because the model shouldn't self-validate its own output - that creates blind spots. Stages are fail-isolated: one bad receipt doesn't crash the run.</p>
+        <p class="reveal" style="max-width:700px;margin-bottom:var(--element-gap)">Each receipt flows through typed stages with Pydantic contracts between them. asyncio.Semaphore(8) caps concurrency; CPU preprocessing (image resize, deskew) runs in asyncio.to_thread() to avoid blocking the event loop. Validation is separate from OCR because the model shouldn't self-validate its own output. Stages are fail-isolated: one bad receipt doesn't crash the run.</p>
         <div class="pipeline reveal">
             <div class="pipe-stage"><span class="pipe-num">1</span> OCR</div><span class="pipe-arrow">-></span>
             <div class="pipe-stage"><span class="pipe-num">2</span> Validate</div><span class="pipe-arrow">-></span>
@@ -267,13 +267,13 @@ a { color: var(--accent); }
             <div class="pipe-stage"><span class="pipe-num">8</span> Report</div>
         </div>
         <div class="stage-row reveal stagger">
-            <div class="stage-card"><div class="num">01</div><h3>OCR Extract</h3><p>Claude Vision with tool_use (malformed output: ~15% -> &lt;1%). Tesseract as circuit-breaker fallback after 3 consecutive failures.</p></div>
+            <div class="stage-card"><div class="num">01</div><h3>OCR Extract</h3><p>Claude Vision with tool_use (malformed output: ~15% -> &lt;1%). SHA256 content-addressed cache - same image never re-OCR'd. Tesseract fallback via circuit breaker.</p></div>
             <div class="stage-card gb"><div class="num" style="color:var(--green)">02</div><h3>Validate</h3><p>Math check: qty x price = total? Line sum = receipt total? Flags hallucinations, duplicates, future dates.</p></div>
             <div class="stage-card ab"><div class="num" style="color:var(--amber)">03</div><h3>Normalize</h3><p>Units to metric. Currency to EUR. Pack sizes to per-unit. Comma decimals to dot. Refund signs preserved.</p></div>
             <div class="stage-card pb"><div class="num" style="color:var(--purple)">04</div><h3>Classify</h3><p>COGS (ingredients + packaging) vs non-COGS (cleaning, equipment, delivery). Word-boundary regex prevents false matches.</p></div>
             <div class="stage-card cb"><div class="num" style="color:var(--cyan)">05</div><h3>Map</h3><p>3-tier: overrides -> fuzzy(85+) -> LLM batch. Why not LLM everything? ~70-80% match at tiers 1-2, free and instant. LLM reserved for hard cases.</p></div>
             <div class="stage-card rb"><div class="num" style="color:var(--red)">06</div><h3>Calculate</h3><p>IQR outlier removal, confidence-weighted averaging. Per-menu-item: recipe qty x unit cost + packaging.</p></div>
-            <div class="stage-card"><div class="num">07</div><h3>Persist</h3><p>SQLite atomic transactions. Composite PKs, run_id lineage. Fail-open: DB errors use exit code 2, not crash.</p></div>
+            <div class="stage-card"><div class="num">07</div><h3>Persist</h3><p>SQLite with upsert idempotency (INSERT OR REPLACE on composite PK). Run_id lineage for audit. Exit codes: 0=ok, 1=no data, 2=persist fail, 3=bad OCR rate (&gt;50% fail).</p></div>
             <div class="stage-card gb"><div class="num" style="color:var(--green)">08</div><h3>Report</h3><p>Markdown with TL;DR, decision table, sensitivity analysis. Plus CSV export, LLM prompt, metrics JSON.</p></div>
         </div>
     </div>
@@ -382,8 +382,8 @@ matched the normalizer's conversion table</div>
         <div class="two-col reveal">
             <div style="display:flex;flex-direction:column;gap:var(--element-gap)">
                 <div class="detail-card">
-                    <h3><span class="red">Circuit Breaker</span></h3>
-                    <p>3 consecutive API failures -> auto-switch to Tesseract. Half-open recovery retries after 60s. Prevents burning retries on a down API.</p>
+                    <h3><span class="red">Circuit Breaker + Run Guard</span></h3>
+                    <p>3 consecutive API failures -> Tesseract fallback. Half-open retry after 60s. Also: if &gt;50% of receipts fail OCR, abort run with exit 3 (bad data in = bad data out). Output truncation detected via token count check.</p>
                 </div>
                 <div class="detail-card">
                     <h3><span class="amber">Rate Limiter</span></h3>
@@ -405,7 +405,7 @@ matched the normalizer's conversion table</div>
                 </div>
                 <div class="detail-card">
                     <h3><span class="cyan">Cross-Validation (PaddleOCR)</span></h3>
-                    <p>PaddleOCR runs after Claude as a second reader. Asymmetric trust: can flag Claude but can't override. Fail-open: if PaddleOCR crashes, confidence is unaffected - only real discrepancy penalizes.</p>
+                    <p>PaddleOCR runs after Claude as a second reader. Asymmetric trust: can flag but can't override. Fail-open: PaddleOCR crash = no penalty. asyncio.shield() on OCR tasks prevents cancellation mid-API-call from corrupting results.</p>
                 </div>
             </div>
         </div>
@@ -442,7 +442,7 @@ matched the normalizer's conversion table</div>
                 </div>
                 <div class="detail-card" style="border-left:3px solid var(--purple)">
                     <h3 class="purple">Pattern Learned</h3>
-                    <p>dict.get(key, default) returns None when key exists with value None. data.get(key) or default handles both. This bit us 3 separate times before it became a lint rule. False confidence is worse than honest gaps - in code and in data.</p>
+                    <p>Validation parity: every path a receipt can take must be tested, not just the happy path. dict.get(key, default) returns None when key exists with value None - bit us 3 times before it became a lint rule. ruff clean, 0 warnings. False confidence is worse than honest gaps.</p>
                 </div>
             </div>
         </div>
