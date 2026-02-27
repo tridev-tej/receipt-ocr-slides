@@ -304,15 +304,15 @@ in the receipt image or text.</div>
             <div style="display:flex;flex-direction:column;gap:var(--element-gap)">
                 <div class="detail-card" style="flex:1">
                     <h3><span class="amber">tool_use</span> over free-text JSON</h3>
-                    <p>V8's biggest win. Malformed output dropped from ~15% to &lt;1%. Schema validates before we even parse.</p>
+                    <p>Phase 2's biggest win. Malformed output dropped from ~15% to &lt;1%. Schema validates before we even parse.</p>
                 </div>
                 <div class="detail-card" style="flex:1">
                     <h3><span class="green">"use null, never guess"</span></h3>
-                    <p>V2-V3 saga. Claude reported "Bananas" when image showed "Lemons" - wrong item, high confidence. Null forces honest gaps.</p>
+                    <p>Phase 1's hardest lesson. Claude reported "Bananas" when image showed "Lemons" - wrong item, high confidence. Null forces honest gaps.</p>
                 </div>
                 <div class="detail-card" style="flex:1">
                     <h3><span class="red">Prompt injection defense</span></h3>
-                    <p>V14 addition. Adversarial text in receipts could hijack extraction. Combined with _sanitize_description() for defense in depth.</p>
+                    <p>Phase 3 addition. Adversarial text in receipts could hijack extraction. Combined with _sanitize_description() for defense in depth.</p>
                 </div>
                 <div class="detail-card" style="flex:1">
                     <h3><span class="purple">Battle-tested iterations</span></h3>
@@ -381,7 +381,7 @@ in the receipt image or text.</div>
                 </div>
                 <div class="detail-card">
                     <h3><span class="amber">Rate Limiter</span></h3>
-                    <p>Token-bucket at 4 req/s. V16 fixed deadlock where capacity capped at rate meant 0.5 req/s could never acquire a token.</p>
+                    <p>Token-bucket at 4 req/s. Fixed deadlock where capacity capped at rate meant 0.5 req/s could never acquire a token.</p>
                 </div>
                 <div class="detail-card">
                     <h3><span class="accent">Cost Guard (TOCTOU fix)</span></h3>
