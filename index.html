@@ -242,8 +242,8 @@ a { color: var(--accent); }
             <div class="stat-card"><div class="stat-value green">318</div><div class="stat-label">Line Items</div></div>
             <div class="stat-card"><div class="stat-value" style="color:var(--cyan)">96.7%</div><div class="stat-label">OCR Confidence</div></div>
             <div class="stat-card"><div class="stat-value amber">94.9%</div><div class="stat-label">Mapping Rate</div></div>
-            <div class="stat-card"><div class="stat-value purple">340</div><div class="stat-label">Tests (unit + integration + edge)</div></div>
-            <div class="stat-card"><div class="stat-value" style="color:var(--red)">73.7%</div><div class="stat-label">Avg Margin</div></div>
+            <div class="stat-card"><div class="stat-value purple">340</div><div class="stat-label">Tests (unit, e2e, adversarial)</div></div>
+            <div class="stat-card"><div class="stat-value" style="color:var(--red)">~4s</div><div class="stat-label">Per Receipt (async)</div></div>
         </div>
     </div>
     <div class="slide-number">01 / 06</div>
@@ -438,11 +438,11 @@ matched the normalizer's conversion table</div>
                 </div>
                 <div class="detail-card" style="border-left:3px solid var(--amber)">
                     <h3 class="amber">Honest Limitations</h3>
-                    <p>Static currency rates (fine for prototype). No auto-learning (override file serves as manual loop). 22-ingredient cap (10k+ SKUs need embeddings). ~$0.02-0.06/receipt cost.</p>
+                    <p>Static currency rates (fine for prototype). No auto-learning (override file = manual feedback loop). 22-ingredient cap (10k+ SKUs need embeddings). ~$0.02-0.06/receipt cost. If starting over: Postgres from day 1.</p>
                 </div>
                 <div class="detail-card" style="border-left:3px solid var(--purple)">
-                    <h3 class="purple">Pattern Learned</h3>
-                    <p>Validation parity: every path a receipt can take must be tested, not just the happy path. dict.get(key, default) returns None when key exists with value None - bit us 3 times before it became a lint rule. ruff clean, 0 warnings. False confidence is worse than honest gaps.</p>
+                    <h3 class="purple">Guiding Principle</h3>
+                    <p>Validation parity: every path a receipt can take must be tested, not just the happy path. 340 tests: normalizer edge cases (comma decimals, pack sizes), full pipeline e2e, adversarial prompts, malformed images. ruff clean, 0 warnings. False confidence is worse than honest gaps.</p>
                 </div>
             </div>
         </div>
