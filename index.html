@@ -254,27 +254,31 @@ a { color: var(--accent); }
     <div class="grid-bg"></div>
     <div class="slide-content">
         <div class="badge reveal">Architecture</div>
-        <h2 class="reveal">8-Stage Async Pipeline</h2>
+        <h2 class="reveal">10-Stage Async Pipeline</h2>
         <p class="reveal" style="max-width:700px;margin-bottom:var(--element-gap)">Each receipt flows through typed stages with Pydantic contracts between them. asyncio.Semaphore(8) caps concurrency; CPU preprocessing (image resize, deskew) runs in asyncio.to_thread() to avoid blocking the event loop. Validation is separate from OCR because the model shouldn't self-validate its own output. Stages are fail-isolated: one bad receipt doesn't crash the run.</p>
         <div class="pipeline reveal">
-            <div class="pipe-stage"><span class="pipe-num">1</span> OCR</div><span class="pipe-arrow">-></span>
-            <div class="pipe-stage"><span class="pipe-num">2</span> Validate</div><span class="pipe-arrow">-></span>
-            <div class="pipe-stage"><span class="pipe-num">3</span> Normalize</div><span class="pipe-arrow">-></span>
-            <div class="pipe-stage"><span class="pipe-num">4</span> Classify</div><span class="pipe-arrow">-></span>
-            <div class="pipe-stage"><span class="pipe-num">5</span> Map</div><span class="pipe-arrow">-></span>
-            <div class="pipe-stage"><span class="pipe-num">6</span> Calculate</div><span class="pipe-arrow">-></span>
-            <div class="pipe-stage"><span class="pipe-num">7</span> Persist</div><span class="pipe-arrow">-></span>
-            <div class="pipe-stage"><span class="pipe-num">8</span> Report</div>
+            <div class="pipe-stage"><span class="pipe-num">1</span> Preprocess</div><span class="pipe-arrow">-></span>
+            <div class="pipe-stage"><span class="pipe-num">2</span> OCR</div><span class="pipe-arrow">-></span>
+            <div class="pipe-stage"><span class="pipe-num">3</span> Cross-Val</div><span class="pipe-arrow">-></span>
+            <div class="pipe-stage"><span class="pipe-num">4</span> Validate</div><span class="pipe-arrow">-></span>
+            <div class="pipe-stage"><span class="pipe-num">5</span> Normalize</div><span class="pipe-arrow">-></span>
+            <div class="pipe-stage"><span class="pipe-num">6</span> Classify</div><span class="pipe-arrow">-></span>
+            <div class="pipe-stage"><span class="pipe-num">7</span> Map</div><span class="pipe-arrow">-></span>
+            <div class="pipe-stage"><span class="pipe-num">8</span> Calculate</div><span class="pipe-arrow">-></span>
+            <div class="pipe-stage"><span class="pipe-num">9</span> Persist</div><span class="pipe-arrow">-></span>
+            <div class="pipe-stage"><span class="pipe-num">10</span> Report</div>
         </div>
         <div class="stage-row reveal stagger">
-            <div class="stage-card"><div class="num">01</div><h3>OCR Extract</h3><p>Claude Vision with tool_use (malformed output: ~15% -> &lt;1%). SHA256 content-addressed cache - same image never re-OCR'd. Tesseract fallback via circuit breaker.</p></div>
-            <div class="stage-card gb"><div class="num" style="color:var(--green)">02</div><h3>Validate</h3><p>Math check: qty x price = total? Line sum = receipt total? Flags hallucinations, duplicates, future dates.</p></div>
-            <div class="stage-card ab"><div class="num" style="color:var(--amber)">03</div><h3>Normalize</h3><p>Units to metric. Currency to EUR. Pack sizes to per-unit. Comma decimals to dot. Refund signs preserved.</p></div>
-            <div class="stage-card pb"><div class="num" style="color:var(--purple)">04</div><h3>Classify</h3><p>COGS (ingredients + packaging) vs non-COGS (cleaning, equipment, delivery). Word-boundary regex prevents false matches.</p></div>
-            <div class="stage-card cb"><div class="num" style="color:var(--cyan)">05</div><h3>Map</h3><p>3-tier: overrides -> fuzzy(85+) -> LLM batch. Why not LLM everything? ~70-80% match at tiers 1-2, free and instant. LLM reserved for hard cases.</p></div>
-            <div class="stage-card rb"><div class="num" style="color:var(--red)">06</div><h3>Calculate</h3><p>IQR outlier removal, confidence-weighted averaging. Per-menu-item: recipe qty x unit cost + packaging.</p></div>
-            <div class="stage-card"><div class="num">07</div><h3>Persist</h3><p>SQLite with upsert idempotency (INSERT OR REPLACE on composite PK). Run_id lineage for audit. Exit codes: 0=ok, 1=no data, 2=persist fail, 3=bad OCR rate (&gt;50% fail).</p></div>
-            <div class="stage-card gb"><div class="num" style="color:var(--green)">08</div><h3>Report</h3><p>Markdown with TL;DR, decision table, sensitivity analysis. Plus CSV export, LLM prompt, metrics JSON.</p></div>
+            <div class="stage-card ab"><div class="num" style="color:var(--amber)">01</div><h3>Preprocess</h3><p>Deskew, contrast enhance, denoise, resize (4MP cap). Runs in asyncio.to_thread() to avoid blocking the event loop.</p></div>
+            <div class="stage-card"><div class="num">02</div><h3>OCR Extract</h3><p>Claude Vision with tool_use (~15% malformed -> &lt;1%). SHA256 content-addressed cache. Tesseract fallback via circuit breaker.</p></div>
+            <div class="stage-card cb"><div class="num" style="color:var(--cyan)">03</div><h3>Cross-Validate</h3><p>PaddleOCR as second reader. Asymmetric trust: can flag Claude but can't override. Fail-open if PaddleOCR crashes.</p></div>
+            <div class="stage-card gb"><div class="num" style="color:var(--green)">04</div><h3>Validate</h3><p>Math check: qty x price = total? Line sum = receipt total? Flags hallucinations, duplicates, future dates.</p></div>
+            <div class="stage-card pb"><div class="num" style="color:var(--purple)">05</div><h3>Normalize</h3><p>Units to metric. Currency to EUR (8 currencies). Pack sizes to per-unit. Comma decimals to dot.</p></div>
+            <div class="stage-card rb"><div class="num" style="color:var(--red)">06</div><h3>Classify</h3><p>COGS (ingredients + packaging) vs non-COGS (cleaning, equipment, delivery). Word-boundary regex prevents false matches.</p></div>
+            <div class="stage-card"><div class="num">07</div><h3>Map</h3><p>3-tier: overrides -> fuzzy(85+) -> LLM batch. ~70-80% match at tiers 1-2 (free, instant). LLM reserved for hard cases.</p></div>
+            <div class="stage-card ab"><div class="num" style="color:var(--amber)">08</div><h3>Calculate</h3><p>IQR outlier removal, confidence-weighted averaging. Per-menu-item: recipe qty x unit cost + packaging.</p></div>
+            <div class="stage-card gb"><div class="num" style="color:var(--green)">09</div><h3>Persist</h3><p>SQLite upsert (INSERT OR REPLACE on composite PK). Run_id lineage. Exit codes: 0=ok, 1=no data, 2=persist fail, 3=bad OCR rate.</p></div>
+            <div class="stage-card pb"><div class="num" style="color:var(--purple)">10</div><h3>Report</h3><p>Markdown with TL;DR, decision table, sensitivity analysis. Plus CSV export, LLM prompt, metrics JSON.</p></div>
         </div>
     </div>
     <div class="slide-number">02 / 06</div>
