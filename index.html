@@ -315,8 +315,8 @@ in the receipt image or text.</div>
                     <p>V14 addition. Adversarial text in receipts could hijack extraction. Combined with _sanitize_description() for defense in depth.</p>
                 </div>
                 <div class="detail-card" style="flex:1">
-                    <h3><span class="purple">29 versions iterated</span></h3>
-                    <p>V1 (Tesseract priced a latte at EUR28,000) to V29 (leading-zero comma parser). Each version fixed a real production bug.</p>
+                    <h3><span class="purple">Battle-tested iterations</span></h3>
+                    <p>From Tesseract pricing a latte at EUR28,000 to robust structured extraction. Each iteration fixed a real production bug.</p>
                 </div>
             </div>
         </div>
@@ -412,15 +412,13 @@ in the receipt image or text.</div>
     <div class="grid-bg"></div>
     <div class="glow-orb" style="width:350px;height:350px;background:var(--green);top:-100px;right:-100px;opacity:0.2;"></div>
     <div class="slide-content">
-        <div class="badge reveal">29 Versions, 340 Tests</div>
-        <h2 class="reveal">The Iteration Arc</h2>
+        <div class="badge reveal">3 Key Iterations</div>
+        <h2 class="reveal">How It Evolved</h2>
         <div class="two-col reveal">
             <div class="timeline stagger">
-                <div class="timeline-item"><div class="timeline-ver vr">V1-3</div><div class="timeline-text"><strong>Stop guessing.</strong> Tesseract priced a latte at EUR28k. Claude hallucinated "Bananas" for "Lemons." Fix: null over fiction.</div></div>
-                <div class="timeline-item"><div class="timeline-ver vbl">V8</div><div class="timeline-text"><strong>tool_use enforcement.</strong> Malformed output dropped from ~15% to &lt;1%. Schema validates before we parse anything.</div></div>
-                <div class="timeline-item"><div class="timeline-ver vam">V9-12</div><div class="timeline-text"><strong>Confidence + gated mapping.</strong> CV penalty differentiates volatile items. "Match ONLY if confident" killed false positives.</div></div>
-                <div class="timeline-item"><div class="timeline-ver vgr">V19-21</div><div class="timeline-text"><strong>EU number parsing.</strong> "3,50" vs "1,500" vs "0,750" - three meanings, five versions to nail the regex disambiguation.</div></div>
-                <div class="timeline-item"><div class="timeline-ver vpu">V25-29</div><div class="timeline-text"><strong>Validation parity.</strong> Every code path runs identical validation. Tool-call + text-fallback now share the same checks.</div></div>
+                <div class="timeline-item"><div class="timeline-ver vr">V1</div><div class="timeline-text"><strong>Raw OCR - garbage in.</strong> Tesseract priced a latte at EUR28k. Claude hallucinated "Bananas" for "Lemons." Free-text JSON broke ~15% of the time. Nothing was validated.</div></div>
+                <div class="timeline-item"><div class="timeline-ver vbl">V2</div><div class="timeline-text"><strong>Structured extraction.</strong> tool_use enforcement dropped malformed output to &lt;1%. "Use null, never guess" killed hallucinations. Confidence-gated mapping with CV penalty separated stable from volatile items.</div></div>
+                <div class="timeline-item"><div class="timeline-ver vgr">V3</div><div class="timeline-text"><strong>Production hardening.</strong> EU number parsing ("3,50" vs "1,500"), circuit breaker with Tesseract fallback, TOCTOU-safe cost guard, prompt injection defense, and full validation parity across all code paths.</div></div>
             </div>
             <div style="display:flex;flex-direction:column;gap:var(--element-gap)">
                 <div class="detail-card" style="border-left:3px solid var(--green)">
