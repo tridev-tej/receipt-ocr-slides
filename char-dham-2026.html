@@ -1,0 +1,1761 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Char Dham Yatra 2026</title>
+<style>
+  :root {
+    --bg: #0f0f0f;
+    --bg-card: #1a1a1a;
+    --bg-sidebar: #141414;
+    --bg-hover: #252525;
+    --text: #e8e0d8;
+    --text-muted: #9a918a;
+    --text-dim: #6b6360;
+    --saffron: #e8943a;
+    --saffron-glow: #f0a050;
+    --saffron-dark: #b06a1a;
+    --gold: #d4a855;
+    --border: #2a2520;
+    --border-light: #3a332d;
+    --red: #e05555;
+    --green: #5eb86c;
+    --blue: #5b9bd5;
+    --purple: #a87fd4;
+    --yellow: #d4b855;
+    --cyan: #5bbfbf;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 24px;
+  }
+
+  body {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 16px;
+  }
+
+  /* Sidebar */
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 260px;
+    height: 100vh;
+    background: var(--bg-sidebar);
+    border-right: 1px solid var(--border);
+    overflow-y: auto;
+    z-index: 100;
+    padding: 24px 0;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border-light) transparent;
+  }
+
+  .sidebar-brand {
+    padding: 0 20px 20px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 16px;
+    text-align: center;
+  }
+
+  .sidebar-brand .om {
+    font-size: 28px;
+    color: var(--saffron);
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .sidebar-brand span {
+    font-size: 13px;
+    color: var(--text-muted);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  .sidebar-section {
+    padding: 8px 20px 4px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--saffron);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  .sidebar a {
+    display: block;
+    padding: 6px 20px 6px 28px;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 13.5px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    transition: all 0.15s;
+    border-left: 3px solid transparent;
+  }
+
+  .sidebar a:hover {
+    color: var(--text);
+    background: var(--bg-hover);
+    border-left-color: var(--saffron);
+  }
+
+  .sidebar a.active {
+    color: var(--saffron);
+    border-left-color: var(--saffron);
+    background: rgba(232, 148, 58, 0.06);
+  }
+
+  /* Main */
+  .main {
+    margin-left: 260px;
+    min-height: 100vh;
+  }
+
+  /* Hero */
+  .hero {
+    background: linear-gradient(135deg, #1a0f05 0%, #2a1508 30%, #1a1008 60%, #0f0f0f 100%);
+    padding: 100px 60px 80px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+      radial-gradient(ellipse at 30% 20%, rgba(232, 148, 58, 0.08) 0%, transparent 60%),
+      radial-gradient(ellipse at 70% 80%, rgba(212, 168, 85, 0.05) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .hero-om {
+    font-size: 48px;
+    color: var(--saffron);
+    opacity: 0.7;
+    margin-bottom: 16px;
+  }
+
+  .hero h1 {
+    font-size: 52px;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+    position: relative;
+  }
+
+  .hero h1 .accent {
+    color: var(--saffron);
+  }
+
+  .hero .subtitle {
+    font-size: 18px;
+    color: var(--saffron-glow);
+    letter-spacing: 3px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-weight: 300;
+    margin-bottom: 28px;
+  }
+
+  .hero .dates {
+    font-size: 15px;
+    color: var(--text-muted);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  .hero .route-line {
+    margin-top: 32px;
+    font-size: 14px;
+    color: var(--text-dim);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    letter-spacing: 1px;
+  }
+
+  .hero .route-line .sep {
+    color: var(--saffron);
+    margin: 0 8px;
+  }
+
+  /* Content area */
+  .content {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 48px 80px;
+  }
+
+  /* Sections */
+  .section {
+    margin-bottom: 56px;
+    padding-top: 8px;
+  }
+
+  .section-title {
+    font-size: 32px;
+    color: var(--text);
+    margin-bottom: 8px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--saffron);
+    display: inline-block;
+  }
+
+  .section-subtitle {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-bottom: 28px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  h2 {
+    font-size: 26px;
+    color: var(--text);
+    margin-top: 36px;
+    margin-bottom: 12px;
+  }
+
+  h3 {
+    font-size: 20px;
+    color: var(--gold);
+    margin-top: 28px;
+    margin-bottom: 10px;
+  }
+
+  h4 {
+    font-size: 17px;
+    color: var(--text-muted);
+    margin-top: 20px;
+    margin-bottom: 8px;
+  }
+
+  p {
+    margin-bottom: 14px;
+    color: var(--text);
+  }
+
+  strong { color: var(--text); }
+
+  /* Day cards */
+  .day-header {
+    background: linear-gradient(135deg, var(--bg-card) 0%, #1e1810 100%);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--saffron);
+    border-radius: 8px;
+    padding: 24px 28px;
+    margin-bottom: 24px;
+  }
+
+  .day-header h2 {
+    margin: 0 0 4px;
+    font-size: 24px;
+    color: var(--text);
+  }
+
+  .day-header .day-meta {
+    font-size: 14px;
+    color: var(--text-muted);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    margin-bottom: 0;
+  }
+
+  .day-header .day-meta strong {
+    color: var(--saffron);
+  }
+
+  .day-section {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 28px 32px;
+    margin-bottom: 40px;
+  }
+
+  .day-section h2 { margin-top: 24px; }
+  .day-section h2:first-child { margin-top: 0; }
+
+  /* Tables */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0 20px;
+    font-size: 14px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  th {
+    background: rgba(232, 148, 58, 0.1);
+    color: var(--saffron);
+    font-weight: 600;
+    text-align: left;
+    padding: 10px 14px;
+    border-bottom: 2px solid var(--border-light);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text);
+    vertical-align: top;
+  }
+
+  tr:last-child td { border-bottom: none; }
+
+  tr:hover td { background: rgba(232, 148, 58, 0.03); }
+
+  /* Callouts */
+  .callout {
+    border-radius: 6px;
+    padding: 16px 20px;
+    margin: 16px 0;
+    border-left: 4px solid;
+    font-size: 14.5px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  .callout-title {
+    font-weight: 700;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .callout-quote {
+    background: rgba(168, 127, 212, 0.06);
+    border-color: var(--purple);
+  }
+  .callout-quote .callout-title { color: var(--purple); }
+  .callout-quote blockquote-text {
+    font-style: italic;
+    color: var(--text);
+    font-size: 16px;
+    font-family: Georgia, serif;
+  }
+
+  .callout-tip {
+    background: rgba(94, 184, 108, 0.06);
+    border-color: var(--green);
+  }
+  .callout-tip .callout-title { color: var(--green); }
+
+  .callout-warning, .callout-caution {
+    background: rgba(212, 184, 85, 0.06);
+    border-color: var(--yellow);
+  }
+  .callout-warning .callout-title, .callout-caution .callout-title { color: var(--yellow); }
+
+  .callout-danger {
+    background: rgba(224, 85, 85, 0.06);
+    border-color: var(--red);
+  }
+  .callout-danger .callout-title { color: var(--red); }
+
+  .callout-success {
+    background: rgba(94, 184, 108, 0.06);
+    border-color: var(--green);
+  }
+  .callout-success .callout-title { color: var(--green); }
+
+  .callout-info {
+    background: rgba(91, 155, 213, 0.06);
+    border-color: var(--blue);
+  }
+  .callout-info .callout-title { color: var(--blue); }
+
+  .callout-note {
+    background: rgba(91, 155, 213, 0.06);
+    border-color: var(--blue);
+  }
+  .callout-note .callout-title { color: var(--blue); }
+
+  /* Checkboxes */
+  .checkbox-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 5px 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 14.5px;
+    color: var(--text);
+  }
+
+  .checkbox-item input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 2px solid var(--border-light);
+    border-radius: 4px;
+    background: transparent;
+    cursor: pointer;
+    flex-shrink: 0;
+    margin-top: 2px;
+    position: relative;
+    transition: all 0.15s;
+  }
+
+  .checkbox-item input[type="checkbox"]:checked {
+    background: var(--saffron);
+    border-color: var(--saffron);
+  }
+
+  .checkbox-item input[type="checkbox"]:checked::after {
+    content: '';
+    position: absolute;
+    left: 5px;
+    top: 1px;
+    width: 5px;
+    height: 10px;
+    border: solid var(--bg);
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+  }
+
+  .checkbox-item input[type="checkbox"]:hover {
+    border-color: var(--saffron);
+  }
+
+  /* Code blocks */
+  pre {
+    background: #0a0a0a;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 20px 24px;
+    overflow-x: auto;
+    font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--text-muted);
+    margin: 16px 0;
+  }
+
+  code {
+    font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+    font-size: 13px;
+  }
+
+  /* Lists */
+  ul, ol {
+    margin: 8px 0 16px 20px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 14.5px;
+  }
+
+  li {
+    margin-bottom: 4px;
+    color: var(--text);
+  }
+
+  li::marker {
+    color: var(--saffron);
+  }
+
+  /* Temple cards */
+  .temple-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 20px;
+  }
+
+  .temple-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 24px 24px 20px;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+
+  .temple-card:hover {
+    border-color: var(--saffron-dark);
+    transform: translateY(-2px);
+  }
+
+  .temple-card.full-width {
+    grid-column: 1 / -1;
+  }
+
+  .temple-dham-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--saffron);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+
+  .temple-card h3 {
+    margin: 0 0 4px;
+    font-size: 22px;
+    color: var(--text);
+  }
+
+  .temple-card .temple-quote {
+    font-style: italic;
+    color: var(--text-dim);
+    font-size: 13.5px;
+    margin-bottom: 14px;
+    padding-left: 12px;
+    border-left: 2px solid var(--purple);
+  }
+
+  .temple-card .temple-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 14px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+
+  .temple-card .temple-meta .tag {
+    background: rgba(232, 148, 58, 0.08);
+    border: 1px solid var(--border);
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+  }
+
+  .temple-card ul {
+    margin-left: 16px;
+    font-size: 13.5px;
+  }
+
+  .temple-card li {
+    margin-bottom: 3px;
+    color: var(--text-muted);
+  }
+
+  /* Planning grid */
+  .planning-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 20px;
+  }
+
+  .planning-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 24px 24px 20px;
+  }
+
+  .planning-card.full-width {
+    grid-column: 1 / -1;
+  }
+
+  .planning-card h3 {
+    margin: 0 0 14px;
+    font-size: 18px;
+    color: var(--text);
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 10px;
+  }
+
+  .planning-card h4 {
+    font-size: 15px;
+    color: var(--saffron);
+    margin-top: 16px;
+    margin-bottom: 6px;
+  }
+
+  .planning-card h4:first-of-type {
+    margin-top: 0;
+  }
+
+  /* Divider */
+  hr {
+    border: none;
+    height: 1px;
+    background: var(--border);
+    margin: 28px 0;
+  }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    padding: 48px 20px 56px;
+    border-top: 1px solid var(--border);
+    background: linear-gradient(180deg, var(--bg) 0%, #1a0f05 100%);
+  }
+
+  .footer .om-footer {
+    font-size: 36px;
+    color: var(--saffron);
+    opacity: 0.6;
+    margin-bottom: 12px;
+  }
+
+  .footer .mantra {
+    font-size: 24px;
+    color: var(--saffron);
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .footer .closing {
+    font-size: 15px;
+    color: var(--text-dim);
+    font-style: italic;
+  }
+
+  /* Mobile hamburger */
+  .menu-toggle {
+    display: none;
+    position: fixed;
+    top: 14px;
+    left: 14px;
+    z-index: 200;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    color: var(--saffron);
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    font-size: 20px;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    font-family: -apple-system, sans-serif;
+  }
+
+  .overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    z-index: 90;
+  }
+
+  /* Dham progress bar */
+  .dham-progress {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    margin-top: 6px;
+  }
+
+  .dham-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--border-light);
+    transition: background 0.3s;
+  }
+
+  .dham-dot.done { background: var(--saffron); }
+
+  .dham-label {
+    font-size: 12px;
+    color: var(--text-dim);
+    font-family: -apple-system, sans-serif;
+    margin-left: 4px;
+  }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .temple-grid, .planning-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .sidebar {
+      transform: translateX(-100%);
+      transition: transform 0.3s ease;
+    }
+
+    .sidebar.open {
+      transform: translateX(0);
+    }
+
+    .overlay.open {
+      display: block;
+    }
+
+    .menu-toggle {
+      display: flex;
+    }
+
+    .main {
+      margin-left: 0;
+    }
+
+    .hero {
+      padding: 80px 24px 60px;
+    }
+
+    .hero h1 {
+      font-size: 32px;
+    }
+
+    .hero .subtitle {
+      font-size: 14px;
+      letter-spacing: 2px;
+    }
+
+    .content {
+      padding: 24px 20px 60px;
+    }
+
+    .section-title {
+      font-size: 26px;
+    }
+
+    .day-header {
+      padding: 18px 20px;
+    }
+
+    .day-section {
+      padding: 20px 18px;
+    }
+
+    pre {
+      padding: 14px 16px;
+      font-size: 11.5px;
+    }
+
+    table {
+      font-size: 12.5px;
+    }
+
+    th, td {
+      padding: 8px 10px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- Mobile menu toggle -->
+<button class="menu-toggle" onclick="toggleSidebar()" aria-label="Toggle navigation">&#9776;</button>
+<div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
+
+<!-- Sidebar -->
+<nav class="sidebar" id="sidebar">
+  <div class="sidebar-brand">
+    <span class="om">&#x1F549;</span>
+    <span>Char Dham Yatra</span>
+  </div>
+
+  <div class="sidebar-section">Overview</div>
+  <a href="#overview">Trip Overview</a>
+  <a href="#kapat">Kapat Dates</a>
+
+  <div class="sidebar-section">The 8 Days</div>
+  <a href="#day1">Day 1 - Haridwar to Barkot</a>
+  <a href="#day2">Day 2 - Yamunotri</a>
+  <a href="#day3">Day 3 - Gangotri</a>
+  <a href="#day4">Day 4 - Kedarnath Base</a>
+  <a href="#day5">Day 5 - Kedarnath Trek</a>
+  <a href="#day6">Day 6 - Kedarnath + Triyuginarayan</a>
+  <a href="#day7">Day 7 - Badrinath</a>
+  <a href="#day8">Day 8 - Return Home</a>
+
+  <div class="sidebar-section">Temples</div>
+  <a href="#temples">All 5 Temples</a>
+  <a href="#temple-yamunotri">Yamunotri</a>
+  <a href="#temple-gangotri">Gangotri</a>
+  <a href="#temple-kedarnath">Kedarnath</a>
+  <a href="#temple-triyuginarayan">Triyuginarayan</a>
+  <a href="#temple-badrinath">Badrinath</a>
+
+  <div class="sidebar-section">Planning</div>
+  <a href="#route-map">Route Map</a>
+  <a href="#packing">Packing Checklist</a>
+  <a href="#bookings">Bookings Checklist</a>
+  <a href="#budget">Budget Estimate</a>
+  <a href="#risk">Risk Assessment</a>
+  <a href="#emergency">Emergency Contacts</a>
+  <a href="#wakeup">Wake-Up Schedule</a>
+</nav>
+
+<!-- Main content -->
+<div class="main">
+
+  <!-- Hero -->
+  <header class="hero">
+    <div class="hero-om">&#x1F549;</div>
+    <h1><span class="accent">Char Dham</span> Yatra 2026</h1>
+    <div class="subtitle">8 Days &nbsp;|&nbsp; 5 Temples &nbsp;|&nbsp; 1,500 km &nbsp;|&nbsp; 48 km on foot</div>
+    <div class="dates">April 18 - 25, 2026 &nbsp;&middot;&nbsp; Uttarakhand, India</div>
+    <div class="route-line">
+      Haridwar <span class="sep">&rarr;</span>
+      Yamunotri <span class="sep">&rarr;</span>
+      Gangotri <span class="sep">&rarr;</span>
+      Kedarnath <span class="sep">&rarr;</span>
+      Triyuginarayan <span class="sep">&rarr;</span>
+      Badrinath <span class="sep">&rarr;</span>
+      Haridwar
+    </div>
+  </header>
+
+  <div class="content">
+
+    <!-- ==================== OVERVIEW ==================== -->
+    <div class="section" id="overview">
+      <h1 class="section-title">Trip Overview</h1>
+      <p class="section-subtitle">Char Dham + Triyuginarayan | Innova Crysta with dedicated driver</p>
+
+      <div class="callout callout-quote">
+        <div class="callout-title">Quote</div>
+        <div>The mountain tests your readiness, not your intentions.</div>
+      </div>
+
+      <h2>The 8 Days</h2>
+      <table>
+        <tr><th>Day</th><th>Date</th><th>Route</th></tr>
+        <tr><td>1</td><td>Apr 18 (Sat)</td><td>Haridwar &rarr; Barkot</td></tr>
+        <tr><td>2</td><td>Apr 19 (Sun)</td><td><strong>YAMUNOTRI</strong> Opening Day</td></tr>
+        <tr><td>3</td><td>Apr 20 (Mon)</td><td><strong>GANGOTRI</strong> + Uttarkashi</td></tr>
+        <tr><td>4</td><td>Apr 21 (Tue)</td><td>Drive to Kedarnath Base</td></tr>
+        <tr><td>5</td><td>Apr 22 (Wed)</td><td><strong>KEDARNATH</strong> Trek Up</td></tr>
+        <tr><td>6</td><td>Apr 23 (Thu)</td><td><strong>KEDARNATH</strong> Darshan + <strong>TRIYUGINARAYAN</strong></td></tr>
+        <tr><td>7</td><td>Apr 24 (Fri)</td><td><strong>BADRINATH</strong></td></tr>
+        <tr><td>8</td><td>Apr 25 (Sat)</td><td>Badrinath &rarr; Haridwar - HOME</td></tr>
+      </table>
+
+      <h2>Night Stays</h2>
+      <table>
+        <tr><th>Night</th><th>Date</th><th>Location</th><th>Altitude</th></tr>
+        <tr><td>1</td><td>Apr 18</td><td>Barkot</td><td>1,352 m</td></tr>
+        <tr><td>2</td><td>Apr 19</td><td>Barkot</td><td>1,352 m</td></tr>
+        <tr><td>3</td><td>Apr 20</td><td>Uttarkashi</td><td>1,158 m</td></tr>
+        <tr><td>4</td><td>Apr 21</td><td>Sitapur/Phata</td><td>~1,800 m</td></tr>
+        <tr><td>5</td><td>Apr 22</td><td>Kedarnath</td><td>3,583 m</td></tr>
+        <tr><td>6</td><td>Apr 23</td><td>Guptkashi</td><td>1,319 m</td></tr>
+        <tr><td>7</td><td>Apr 24</td><td>Badrinath</td><td>3,133 m</td></tr>
+      </table>
+
+      <div class="callout callout-success">
+        <div class="callout-title">Completion Tracker</div>
+        <div class="checkbox-item"><input type="checkbox"> Yamunotri darshan</div>
+        <div class="checkbox-item"><input type="checkbox"> Gangotri darshan</div>
+        <div class="checkbox-item"><input type="checkbox"> Kedarnath darshan</div>
+        <div class="checkbox-item"><input type="checkbox"> Triyuginarayan visit</div>
+        <div class="checkbox-item"><input type="checkbox"> Badrinath darshan</div>
+        <div class="checkbox-item"><input type="checkbox"> All 5 Panch Prayags seen</div>
+      </div>
+
+      <div class="callout callout-quote">
+        <div class="callout-title">Quote</div>
+        <div>Har Har Mahadev. Jai Shri Kedar. Jai Badri Vishal.<br>8 days. 5 temples. 1,500 km. 48 km on foot. Come home transformed.</div>
+      </div>
+    </div>
+
+    <!-- Kapat Dates -->
+    <div class="section" id="kapat">
+      <h1 class="section-title">Kapat Dates 2026</h1>
+      <p class="section-subtitle">Official opening & closing dates</p>
+
+      <h2>Opening Dates</h2>
+      <table>
+        <tr><th>Shrine</th><th>Opens</th><th>Closes (Expected)</th><th>Festival</th></tr>
+        <tr><td>Yamunotri</td><td><strong>Apr 19, 2026</strong> (Akshaya Tritiya)</td><td>Nov 10 (Bhai Dooj)</td><td>Yamuna Jayanthi</td></tr>
+        <tr><td>Gangotri</td><td><strong>Apr 19, 2026</strong> (Akshaya Tritiya)</td><td>Nov 10 (Govardhan Puja)</td><td>Ganga Dussehra (May)</td></tr>
+        <tr><td>Kedarnath</td><td><strong>Apr 22, 2026</strong> at 8:00 AM</td><td>Nov 11 (Bhai Dooj)</td><td>Bhairava Utsav</td></tr>
+        <tr><td>Badrinath</td><td><strong>Apr 23, 2026</strong></td><td>Nov 13 (Vijay Dashami)</td><td>Mata Murti Ka Mela (Sep)</td></tr>
+      </table>
+
+      <table>
+        <tr><th>Dham</th><th>Opens</th><th>We Visit</th></tr>
+        <tr><td>Yamunotri</td><td><strong>Apr 19</strong></td><td>Apr 19 (Opening day!)</td></tr>
+        <tr><td>Gangotri</td><td><strong>Apr 19</strong></td><td>Apr 20</td></tr>
+        <tr><td>Kedarnath</td><td><strong>Apr 22</strong></td><td>Apr 23</td></tr>
+        <tr><td>Badrinath</td><td><strong>Apr 23</strong></td><td>Apr 24</td></tr>
+      </table>
+
+      <h2>Winter Seats</h2>
+      <ul>
+        <li>Kedarnath deity &rarr; Omkareshwar Temple, Ukhimath</li>
+        <li>Gangotri deity &rarr; Mukhba Village</li>
+        <li>Badrinath deity &rarr; Narasimha Temple, Joshimath</li>
+      </ul>
+
+      <h2>Registration</h2>
+      <ul>
+        <li>Opens <strong>March 20, 2026</strong></li>
+        <li>Portal: registrationandtouristcare.uk.gov.in</li>
+        <li>60% online slots, 40% offline</li>
+        <li>Biometric mandatory for offline</li>
+      </ul>
+
+      <p style="font-size:13px; color:var(--text-dim); margin-top:12px;">Sources: Announced at Omkareshwar Temple, Ukhimath on Mahashivratri (Feb 15, 2026). Confirmed by Economic Times, Himalayan Dream Treks, Mathrubhumi, Temple Committee. Chief priest 2026: T Gangadhar Ling (Kedarnath).</p>
+    </div>
+
+    <!-- ==================== DAY 1 ==================== -->
+    <div class="section" id="day1">
+      <div class="day-header">
+        <h2>Day 1 | Apr 18 (Sat)</h2>
+        <p class="day-meta">Haridwar &rarr; Barkot &nbsp;&middot;&nbsp; <strong>180-215 km</strong> &nbsp;&middot;&nbsp; 5-8 hrs drive &nbsp;&middot;&nbsp; Wake up: 6:00 AM</p>
+        <div class="dham-progress">
+          <div class="dham-dot"></div><div class="dham-dot"></div><div class="dham-dot"></div><div class="dham-dot"></div>
+          <span class="dham-label">0/4 Dhams</span>
+        </div>
+      </div>
+
+      <div class="callout callout-tip">
+        <div class="callout-title">Tip</div>
+        <div>Difficulty: Easy drive</div>
+      </div>
+
+      <div class="day-section">
+        <h2>Schedule</h2>
+        <table>
+          <tr><th>Time</th><th>Plan</th></tr>
+          <tr><td>6:00 AM</td><td>Depart Haridwar. NH via Rishikesh &rarr; Narendra Nagar &rarr; Chamba</td></tr>
+          <tr><td>8:00 AM</td><td>Breakfast at Chamba. Mountain roads begin</td></tr>
+          <tr><td>10:00 AM</td><td>Tehri Dam viewpoint (10 min stop - massive reservoir)</td></tr>
+          <tr><td>12:30 PM</td><td>Dharasu bend. Lunch near Dharasu</td></tr>
+          <tr><td>1:30-2:00 PM</td><td><strong>Arrive Barkot.</strong> Check in</td></tr>
+          <tr><td>Afternoon</td><td>REST - only real rest window before 6 days of non-stop action</td></tr>
+          <tr><td>Evening</td><td>Walk to Yamuna River bridge. Prep daypack for Yamunotri</td></tr>
+          <tr><td>7:00 PM</td><td>Early dinner</td></tr>
+          <tr><td>8:30 PM</td><td>Sleep. 3:30 AM wake-up tomorrow</td></tr>
+        </table>
+
+        <h2>Road Conditions</h2>
+        <ul>
+          <li>Up to Mussoorie: smooth and wide</li>
+          <li>Beyond Mussoorie: steeper, narrower, sharp curves</li>
+          <li>Traffic congestion common near Kempty Falls zone</li>
+          <li>Route via Mussoorie is longer but scenic; direct route via Nainbagh is shorter</li>
+        </ul>
+
+        <div class="callout callout-warning">
+          <div class="callout-title">Warning</div>
+          <div>Pack Check Before Sleep: Daypack for tomorrow - water bottle, dry fruits, warm layer, poncho, cash, torch, trekking pole.</div>
+        </div>
+      </div>
+      <p style="color:var(--text-dim); font-size:14px;"><strong>Overnight</strong>: Barkot (1,352 m)</p>
+    </div>
+
+    <!-- ==================== DAY 2 ==================== -->
+    <div class="section" id="day2">
+      <div class="day-header">
+        <h2>Day 2 | Apr 19 (Sun) | YAMUNOTRI - Opening Day</h2>
+        <p class="day-meta">Trek: <strong>10-14 km</strong> (5-7 km up + down) &nbsp;&middot;&nbsp; 8-10 hrs total &nbsp;&middot;&nbsp; Wake up: <strong>3:30 AM</strong></p>
+        <div class="dham-progress">
+          <div class="dham-dot done"></div><div class="dham-dot"></div><div class="dham-dot"></div><div class="dham-dot"></div>
+          <span class="dham-label">1/4 Dhams</span>
+        </div>
+      </div>
+
+      <div class="callout callout-tip">
+        <div class="callout-title">Tip</div>
+        <div>Difficulty: Trek day (moderate-hard)</div>
+      </div>
+
+      <div class="day-section">
+        <h2>Schedule</h2>
+        <table>
+          <tr><th>Time</th><th>Plan</th></tr>
+          <tr><td>3:30 AM</td><td>Wake up. Light breakfast - banana + chai, no heavy food</td></tr>
+          <tr><td>4:00 AM</td><td>Drive to Janki Chatti (36-45 km, 1.5 hrs)</td></tr>
+          <tr><td>5:45 AM</td><td>Start trek (5-7 km up). Opening day energy - chanting, bells</td></tr>
+          <tr><td>9:00-9:30 AM</td><td><strong>YAMUNOTRI DARSHAN</strong></td></tr>
+          <tr><td></td><td><strong>Surya Kund</strong> - cook prasad in hot spring</td></tr>
+          <tr><td></td><td><strong>Divya Shila</strong> puja</td></tr>
+          <tr><td></td><td>Temple darshan + opening ceremony</td></tr>
+          <tr><td>10:30 AM</td><td>Start trek down</td></tr>
+          <tr><td>1:00 PM</td><td>Back at Janki Chatti. Lunch (dal-rice, hot soup)</td></tr>
+          <tr><td>2:00 PM</td><td>Drive to Barkot. Arrive 3:30 PM</td></tr>
+          <tr><td>Afternoon</td><td>Hot shower. Rest legs</td></tr>
+          <tr><td>8:30 PM</td><td>Sleep. 4:30 AM wake-up</td></tr>
+        </table>
+
+        <div class="callout callout-caution">
+          <div class="callout-title">Caution</div>
+          <div>Opening Day Crowds: Yamunotri opening day = massive crowds. The 3:30 AM start is critical. Pony available (Rs 2-4K) if needed.</div>
+        </div>
+      </div>
+      <p style="color:var(--text-dim); font-size:14px;"><strong>Overnight</strong>: Barkot (1,352 m) &nbsp;&middot;&nbsp; <strong>Dham</strong>: 1/4 complete</p>
+    </div>
+
+    <!-- ==================== DAY 3 ==================== -->
+    <div class="section" id="day3">
+      <div class="day-header">
+        <h2>Day 3 | Apr 20 (Mon) | Barkot &rarr; GANGOTRI &rarr; Uttarkashi</h2>
+        <p class="day-meta">Driving: <strong>~282 km</strong> &nbsp;&middot;&nbsp; 10-12 hrs &nbsp;&middot;&nbsp; Wake up: <strong>4:30 AM</strong></p>
+        <div class="dham-progress">
+          <div class="dham-dot done"></div><div class="dham-dot done"></div><div class="dham-dot"></div><div class="dham-dot"></div>
+          <span class="dham-label">2/4 Dhams</span>
+        </div>
+      </div>
+
+      <div class="callout callout-danger">
+        <div class="callout-title">Danger</div>
+        <div>Difficulty: Tightest day - 282 km mountain driving + darshan</div>
+      </div>
+
+      <div class="day-section">
+        <h2>Schedule</h2>
+        <table>
+          <tr><th>Time</th><th>Plan</th></tr>
+          <tr><td>4:30 AM</td><td>Wake up. Quick breakfast</td></tr>
+          <tr><td>5:00 AM</td><td>Depart Barkot &rarr; Uttarkashi (82-120 km, 3-5 hrs via Dharasu Band)</td></tr>
+          <tr><td>8:00-8:30 AM</td><td>Arrive Uttarkashi. Quick visit <strong>Kashi Vishwanath Temple</strong></td></tr>
+          <tr><td>9:00 AM</td><td>Depart &rarr; Gangotri (100 km, 3-4 hrs via Harsil)</td></tr>
+          <tr><td>12:00-12:30 PM</td><td><strong>GANGOTRI DARSHAN</strong></td></tr>
+          <tr><td></td><td>Ganga puja at Bhagirathi river origin</td></tr>
+          <tr><td></td><td>No trek needed - walk-in temple</td></tr>
+          <tr><td>1:00 PM</td><td>Lunch at Gangotri</td></tr>
+          <tr><td>1:30 PM</td><td>Depart &rarr; Uttarkashi (100 km, 3-4 hrs)</td></tr>
+          <tr><td>5:00-5:30 PM</td><td>Arrive Uttarkashi. Check in. Relax</td></tr>
+          <tr><td>7:30 PM</td><td>Dinner</td></tr>
+          <tr><td>9:00 PM</td><td>Sleep</td></tr>
+        </table>
+
+        <h2>Route Highlights</h2>
+        <ul>
+          <li><strong>Radi Top</strong>: Highest point on Barkot-Uttarkashi stretch. Panoramic Himalayan views</li>
+          <li><strong>Dharasu Band</strong>: Crucial junction where Yamuna watershed meets Bhagirathi valley</li>
+          <li><strong>Harsil Valley</strong>: One of the most stunning stretches in Garhwal (Uttarkashi-Gangotri)</li>
+        </ul>
+
+        <div class="callout callout-danger">
+          <div class="callout-title">Danger</div>
+          <div>Non-negotiable: 4:30 AM start or this day doesn't work. Any road delay cascades into arriving Uttarkashi after dark.</div>
+        </div>
+      </div>
+      <p style="color:var(--text-dim); font-size:14px;"><strong>Overnight</strong>: Uttarkashi (1,158 m) &nbsp;&middot;&nbsp; <strong>Dhams</strong>: 2/4 complete</p>
+    </div>
+
+    <!-- ==================== DAY 4 ==================== -->
+    <div class="section" id="day4">
+      <div class="day-header">
+        <h2>Day 4 | Apr 21 (Tue) | Uttarkashi &rarr; Kedarnath Base</h2>
+        <p class="day-meta">Distance: <strong>196-235 km</strong> &nbsp;&middot;&nbsp; 8-10 hrs drive &nbsp;&middot;&nbsp; Wake up: 6:00 AM</p>
+        <div class="dham-progress">
+          <div class="dham-dot done"></div><div class="dham-dot done"></div><div class="dham-dot"></div><div class="dham-dot"></div>
+          <span class="dham-label">2/4 Dhams</span>
+        </div>
+      </div>
+
+      <div class="callout callout-tip">
+        <div class="callout-title">Tip</div>
+        <div>Difficulty: Full driving day (long but straightforward)</div>
+      </div>
+
+      <div class="day-section">
+        <h2>Schedule</h2>
+        <table>
+          <tr><th>Time</th><th>Plan</th></tr>
+          <tr><td>6:00 AM</td><td>Wake up. Breakfast</td></tr>
+          <tr><td>7:00 AM</td><td>Depart Uttarkashi &rarr; Sonprayag</td></tr>
+          <tr><td></td><td>Route: Uttarkashi &rarr; Malla &rarr; Tilwara &rarr; Rudraprayag &rarr; Augustmuni &rarr; Guptkashi &rarr; Sonprayag</td></tr>
+          <tr><td>12:00 PM</td><td>Lunch at <strong>Rudraprayag</strong> - Panch Prayag #1 (Alaknanda + Mandakini)</td></tr>
+          <tr><td>4:00-5:00 PM</td><td>Arrive Sitapur/Phata. Check in</td></tr>
+          <tr><td>Evening</td><td>REST. Prep daypack for Kedarnath</td></tr>
+          <tr><td>7:00 PM</td><td>Early dinner. Eat well - paratha, dal, chai</td></tr>
+          <tr><td>8:30 PM</td><td><strong>Sleep. Tomorrow you climb to God</strong></td></tr>
+        </table>
+
+        <div class="callout callout-info">
+          <div class="callout-title">Info</div>
+          <div>Why This Day Matters: Pure driving day = proper rest before Kedarnath. Resist the urge to add anything. Your legs and lungs will thank you tomorrow.</div>
+        </div>
+
+        <h2>Daypack for Kedarnath (prep tonight)</h2>
+        <div class="checkbox-item"><input type="checkbox"> Water (2L)</div>
+        <div class="checkbox-item"><input type="checkbox"> Snacks / dry fruits / energy bars</div>
+        <div class="checkbox-item"><input type="checkbox"> Warm layers (thermals + fleece + windproof)</div>
+        <div class="checkbox-item"><input type="checkbox"> Poncho/raincoat</div>
+        <div class="checkbox-item"><input type="checkbox"> Torch/headlamp</div>
+        <div class="checkbox-item"><input type="checkbox"> Trekking pole (rent at Gaurikund)</div>
+        <div class="checkbox-item"><input type="checkbox"> Cash</div>
+        <div class="checkbox-item"><input type="checkbox"> Medicines (Diamox, paracetamol)</div>
+      </div>
+      <p style="color:var(--text-dim); font-size:14px;"><strong>Overnight</strong>: Sitapur/Phata (~1,800 m)</p>
+    </div>
+
+    <!-- ==================== DAY 5 ==================== -->
+    <div class="section" id="day5">
+      <div class="day-header">
+        <h2>Day 5 | Apr 22 (Wed) | KEDARNATH Trek Up - Opening Day</h2>
+        <p class="day-meta">Trek: <strong>16 km up</strong> &nbsp;&middot;&nbsp; 6-8 hrs &nbsp;&middot;&nbsp; Elevation gain: ~1,500 m &nbsp;&middot;&nbsp; Summit: 3,583 m &nbsp;&middot;&nbsp; Wake up: <strong>4:30 AM</strong></p>
+        <div class="dham-progress">
+          <div class="dham-dot done"></div><div class="dham-dot done"></div><div class="dham-dot done"></div><div class="dham-dot"></div>
+          <span class="dham-label">3/4 Dhams</span>
+        </div>
+      </div>
+
+      <div class="callout callout-danger">
+        <div class="callout-title">Danger</div>
+        <div>Difficulty: HARDEST DAY OF THE YATRA</div>
+      </div>
+
+      <div class="day-section">
+        <h2>Schedule</h2>
+        <table>
+          <tr><th>Time</th><th>Plan</th></tr>
+          <tr><td>4:30 AM</td><td>Wake up. Eat well - paratha, chai, banana</td></tr>
+          <tr><td>5:30 AM</td><td>Drive to Sonprayag. Park Innova. Jeep to Gaurikund (Rs 50)</td></tr>
+          <tr><td>7:00 AM</td><td><strong>Start Kedarnath trek</strong></td></tr>
+          <tr><td>~9:00 AM</td><td>Jungle Chatti (4 km)</td></tr>
+          <tr><td>~10:30 AM</td><td>Bheem Bali (7 km) - chai break, 15 min</td></tr>
+          <tr><td>~12:00 PM</td><td>Linchauli (11 km) - lunch, rest 30 min max</td></tr>
+          <tr><td>~2:00 PM</td><td>Kedarnath Base Camp (15 km)</td></tr>
+          <tr><td>3:00-4:00 PM</td><td><strong>Arrive Kedarnath</strong> (16 km). Check into pukka building</td></tr>
+          <tr><td>Evening</td><td>Walk toward temple. Evening view of Kedarnath + snow peaks</td></tr>
+          <tr><td>7:00 PM</td><td>Dinner (anything hot)</td></tr>
+          <tr><td>8:00 PM</td><td>Sleep. Thermals + fleece + socks to bed. 0-5&deg;C</td></tr>
+        </table>
+
+        <h2>Trek Route</h2>
+        <pre>Gaurikund (0 km)
+    |
+    |-- 4 km -- Jungle Chatti
+    |
+    |-- 3 km -- Bheem Bali (water, Wi-Fi, tents)
+    |
+    |-- 4 km -- Linchauli (medical aid, GMVN tents)
+    |
+    |-- 4 km -- Base Camp (glaciers visible)
+    |
+    '-- 1 km -- KEDARNATH TEMPLE (3,583 m)</pre>
+
+        <div class="callout callout-danger">
+          <div class="callout-title">Danger - Non-negotiable</div>
+          <ul>
+            <li>Walk <strong>SLOW</strong>. Short breaks (2-3 min, not 15-20)</li>
+            <li>Drink water every 20 minutes</li>
+            <li>Headache/dizziness = altitude. Slow down, don't push</li>
+            <li>Trekking pole is NOT optional</li>
+            <li>Opening day = busy trail. Start early, stay patient</li>
+          </ul>
+        </div>
+      </div>
+      <p style="color:var(--text-dim); font-size:14px;"><strong>Overnight</strong>: Kedarnath (3,583 m) - pukka building with hot water</p>
+    </div>
+
+    <!-- ==================== DAY 6 ==================== -->
+    <div class="section" id="day6">
+      <div class="day-header">
+        <h2>Day 6 | Apr 23 (Thu) | KEDARNATH Darshan + TRIYUGINARAYAN</h2>
+        <p class="day-meta">Trek down: <strong>16 km</strong> (3-4 hrs) &nbsp;&middot;&nbsp; Triyuginarayan detour: 10-13 km drive &nbsp;&middot;&nbsp; Wake up: <strong>4:30 AM</strong></p>
+        <div class="dham-progress">
+          <div class="dham-dot done"></div><div class="dham-dot done"></div><div class="dham-dot done"></div><div class="dham-dot"></div>
+          <span class="dham-label">3/4 Dhams + Triyuginarayan</span>
+        </div>
+      </div>
+
+      <div class="callout callout-tip">
+        <div class="callout-title">Tip</div>
+        <div>Difficulty: Hard but manageable (split activities)</div>
+      </div>
+
+      <div class="day-section">
+        <h2>Morning: Kedarnath Darshan</h2>
+        <table>
+          <tr><th>Time</th><th>Plan</th></tr>
+          <tr><td>4:30 AM</td><td>Wake up. Join darshan queue immediately</td></tr>
+          <tr><td>5:00-7:00 AM</td><td>Queue (~1.5-2 hrs, Day 2 after opening)</td></tr>
+          <tr><td>7:00-8:00 AM</td><td><strong>KEDARNATH DARSHAN</strong></td></tr>
+          <tr><td></td><td>Rudrabhishek if time permits</td></tr>
+          <tr><td></td><td>Visit <strong>Adi Shankaracharya Samadhi</strong> behind temple</td></tr>
+          <tr><td>8:30 AM</td><td>Quick breakfast/chai. Pack bags</td></tr>
+          <tr><td>9:00 AM</td><td><strong>Start trek down</strong> (16 km). Use trekking pole - knees take the hit downhill</td></tr>
+          <tr><td>12:30 PM</td><td>Reach Gaurikund. Quick hot kund dip if legs allow</td></tr>
+          <tr><td>1:00 PM</td><td>Jeep to Sonprayag. Meet driver</td></tr>
+        </table>
+
+        <h2>Afternoon: Triyuginarayan</h2>
+        <table>
+          <tr><th>Time</th><th>Plan</th></tr>
+          <tr><td>1:30 PM</td><td><strong>Drive to Triyuginarayan</strong> (10-13 km from Sonprayag, 30 min)</td></tr>
+          <tr><td>2:00-3:30 PM</td><td><strong>TRIYUGINARAYAN TEMPLE</strong> - Where Shiva Married Parvati</td></tr>
+          <tr><td></td><td><strong>Akhand Dhuni</strong> - eternal flame burning across 3 yugas</td></tr>
+          <tr><td></td><td><strong>Brahma Shila</strong> - exact spot of the divine wedding</td></tr>
+          <tr><td></td><td><strong>Three sacred kunds</strong>: Rudrakund, Vishnukund, Brahmakund</td></tr>
+          <tr><td></td><td>Optional: <strong>Gauri Cave</strong> (2 km walk)</td></tr>
+          <tr><td>4:00 PM</td><td>Drive to Guptkashi. Check in. Hot shower</td></tr>
+          <tr><td>7:00 PM</td><td>Dinner</td></tr>
+          <tr><td>9:00 PM</td><td>Sleep</td></tr>
+        </table>
+
+        <div class="callout callout-warning">
+          <div class="callout-title">Warning - Contingency</div>
+          <div>If running late from Kedarnath (bad weather, long queue, fatigue), drop Triyuginarayan. Go straight to Guptkashi. The 4 Dhams take priority.</div>
+        </div>
+      </div>
+      <p style="color:var(--text-dim); font-size:14px;"><strong>Overnight</strong>: Guptkashi (1,319 m) &nbsp;&middot;&nbsp; <strong>Dhams</strong>: 3/4 complete + Triyuginarayan</p>
+    </div>
+
+    <!-- ==================== DAY 7 ==================== -->
+    <div class="section" id="day7">
+      <div class="day-header">
+        <h2>Day 7 | Apr 24 (Fri) | Guptkashi &rarr; BADRINATH</h2>
+        <p class="day-meta">Distance: <strong>185 km</strong> (short route via Chopta) &nbsp;&middot;&nbsp; 6-8 hrs &nbsp;&middot;&nbsp; Wake up: 6:00 AM</p>
+        <div class="dham-progress">
+          <div class="dham-dot done"></div><div class="dham-dot done"></div><div class="dham-dot done"></div><div class="dham-dot done"></div>
+          <span class="dham-label">4/4 Dhams COMPLETE</span>
+        </div>
+      </div>
+
+      <div class="callout callout-tip">
+        <div class="callout-title">Tip</div>
+        <div>Difficulty: Long drive, manageable</div>
+      </div>
+
+      <div class="day-section">
+        <h2>Schedule</h2>
+        <table>
+          <tr><th>Time</th><th>Plan</th></tr>
+          <tr><td>6:00 AM</td><td>Wake up. Breakfast</td></tr>
+          <tr><td>7:00 AM</td><td>Depart Guptkashi &rarr; Badrinath</td></tr>
+          <tr><td></td><td><strong>Short route</strong>: Guptkashi &rarr; Ukhimath &rarr; Chopta &rarr; Mandal &rarr; Gopeshwar &rarr; Chamoli &rarr; Pipalkoti &rarr; Joshimath &rarr; Badrinath</td></tr>
+          <tr><td>10:00 AM</td><td>Chai stop at Chamoli/Pipalkoti</td></tr>
+          <tr><td>12:00 PM</td><td><strong>Vishnuprayag</strong> - Panch Prayag #2 (Alaknanda + Dhauliganga)</td></tr>
+          <tr><td>1:00-2:00 PM</td><td><strong>Arrive Badrinath.</strong> Check in</td></tr>
+          <tr><td>3:00 PM</td><td>Rest, freshen up</td></tr>
+          <tr><td>4:00 PM</td><td><strong>Tapt Kund</strong> holy dip (hot spring)</td></tr>
+          <tr><td>5:00 PM</td><td><strong>BADRINATH DARSHAN</strong> (Day 2 after opening - manageable queue)</td></tr>
+          <tr><td>7:00 PM</td><td>Dinner</td></tr>
+          <tr><td>9:00 PM</td><td>Sleep</td></tr>
+        </table>
+
+        <div class="callout callout-info">
+          <div class="callout-title">Info - Route Choice</div>
+          <div>
+            <strong>Short route (Chopta/Mandal)</strong>: 185 km, scenic, passes through Chopta meadows<br>
+            <strong>Long route (Rudraprayag)</strong>: 225 km, main highway, more reliable<br>
+            Confirm with driver morning of - he'll know which is better that day.
+          </div>
+        </div>
+      </div>
+      <p style="color:var(--text-dim); font-size:14px;"><strong>Overnight</strong>: Badrinath (3,133 m) &nbsp;&middot;&nbsp; <strong>Dhams</strong>: 4/4 COMPLETE</p>
+    </div>
+
+    <!-- ==================== DAY 8 ==================== -->
+    <div class="section" id="day8">
+      <div class="day-header">
+        <h2>Day 8 | Apr 25 (Sat) | Badrinath &rarr; Haridwar - HOME</h2>
+        <p class="day-meta">Distance: <strong>322 km</strong> &nbsp;&middot;&nbsp; 9-10 hrs drive &nbsp;&middot;&nbsp; Wake up: 5:00 AM</p>
+        <div class="dham-progress">
+          <div class="dham-dot done"></div><div class="dham-dot done"></div><div class="dham-dot done"></div><div class="dham-dot done"></div>
+          <span class="dham-label">4/4 DONE</span>
+        </div>
+      </div>
+
+      <div class="callout callout-tip">
+        <div class="callout-title">Tip</div>
+        <div>Difficulty: Long drive, last push</div>
+      </div>
+
+      <div class="day-section">
+        <h2>Schedule</h2>
+        <table>
+          <tr><th>Time</th><th>Plan</th></tr>
+          <tr><td>5:00 AM</td><td>Wake up. Tapt Kund dip at dawn (if not done yesterday)</td></tr>
+          <tr><td>5:30 AM</td><td>Darshan queue (if not done yesterday evening)</td></tr>
+          <tr><td>7:30 AM</td><td>Breakfast</td></tr>
+          <tr><td>8:00 AM</td><td><strong>Mana Village</strong> (3 km from Badrinath)</td></tr>
+          <tr><td></td><td>India's last village before Tibet</td></tr>
+          <tr><td></td><td><strong>Vyas Gufa</strong> - cave where Vedas were composed</td></tr>
+          <tr><td></td><td><strong>Bhim Pul</strong> - natural rock bridge</td></tr>
+          <tr><td></td><td><strong>Saraswati River</strong> origin</td></tr>
+          <tr><td></td><td>Last chai shop of India</td></tr>
+          <tr><td>9:00 AM</td><td><strong>DEPART &rarr; Haridwar</strong> (322 km)</td></tr>
+          <tr><td>11:00 AM</td><td><strong>Nandprayag</strong> - Panch Prayag #3</td></tr>
+          <tr><td>12:00 PM</td><td>Lunch at <strong>Karnaprayag</strong> - Panch Prayag #4</td></tr>
+          <tr><td>3:00 PM</td><td>Srinagar, Garhwal</td></tr>
+          <tr><td>5:00 PM</td><td><strong>DEVPRAYAG - MUST STOP</strong> - Panch Prayag #5</td></tr>
+          <tr><td></td><td>Alaknanda + Bhagirathi = <strong>THE GANGA</strong></td></tr>
+          <tr><td>6:00 PM</td><td>Rishikesh</td></tr>
+          <tr><td>7:00-8:00 PM</td><td><strong>ARRIVE HARIDWAR. DONE.</strong></td></tr>
+        </table>
+
+        <div class="callout callout-success">
+          <div class="callout-title">YATRA COMPLETE</div>
+          <div>
+            Yamunotri &#10003; &nbsp; Gangotri &#10003; &nbsp; Kedarnath &#10003; &nbsp; Badrinath &#10003; &nbsp; + Triyuginarayan &#10003;<br>
+            All 5 Panch Prayags witnessed.
+          </div>
+        </div>
+      </div>
+      <p style="color:var(--text-dim); font-size:14px;"><strong>Home.</strong></p>
+    </div>
+
+    <!-- ==================== TEMPLES ==================== -->
+    <div class="section" id="temples">
+      <h1 class="section-title">The 5 Temples</h1>
+      <p class="section-subtitle">4 Dhams + the divine wedding site</p>
+
+      <div class="temple-grid">
+
+        <!-- Yamunotri -->
+        <div class="temple-card" id="temple-yamunotri">
+          <div class="temple-dham-label">Dham 1</div>
+          <h3>Yamunotri</h3>
+          <div class="temple-quote">Source of the sacred Yamuna River</div>
+          <div class="temple-meta">
+            <span class="tag">Goddess Yamuna</span>
+            <span class="tag">3,293 m</span>
+            <span class="tag">Opens Apr 19</span>
+          </div>
+          <ul>
+            <li><strong>Surya Kund</strong> - hot spring where devotees cook rice/potatoes as prasad (nature's kitchen)</li>
+            <li><strong>Divya Shila</strong> - sacred rock, puja before entering temple</li>
+            <li>Built by Maharaja Pratap Shah of Tehri Garhwal (19th century)</li>
+            <li><strong>Saptarishi Kund</strong> - actual glacial source (12 km from temple - not visiting)</li>
+          </ul>
+          <h4>Trek</h4>
+          <ul>
+            <li>Start: Janki Chatti (last motorable point)</li>
+            <li>Distance: 5-7 km one way</li>
+            <li>Time: 4-5 hrs up, 3-4 hrs down</li>
+            <li>Options: Walk, pony (Rs 2-4K), palki (palanquin)</li>
+          </ul>
+          <p style="font-size:12px; color:var(--text-dim); margin-top:10px;">Darshan: 6:00 AM - 8:00 PM (yatra season)</p>
+        </div>
+
+        <!-- Gangotri -->
+        <div class="temple-card" id="temple-gangotri">
+          <div class="temple-dham-label">Dham 2</div>
+          <h3>Gangotri</h3>
+          <div class="temple-quote">Where the holy Ganga first touched Earth</div>
+          <div class="temple-meta">
+            <span class="tag">Goddess Ganga</span>
+            <span class="tag">3,100 m</span>
+            <span class="tag">Opens Apr 19</span>
+          </div>
+          <ul>
+            <li><strong>Bhagirathi River</strong> - the Ganga begins here as Bhagirathi</li>
+            <li>Built by General Amar Singh Thapa (19th century)</li>
+            <li><strong>Gaumukh Glacier</strong> - actual glacial source, 19 km further (not on this trip)</li>
+            <li><strong>No trek required</strong> - walk-in temple, accessible by road</li>
+            <li><strong>Harsil Valley</strong> - approach road is one of the most stunning in Garhwal</li>
+          </ul>
+          <h4>Access</h4>
+          <ul>
+            <li>Drive from Uttarkashi: 100 km, 3-4 hrs</li>
+            <li>Road goes all the way to the temple</li>
+          </ul>
+        </div>
+
+        <!-- Kedarnath -->
+        <div class="temple-card" id="temple-kedarnath">
+          <div class="temple-dham-label">Dham 3 - Jyotirlinga</div>
+          <h3>Kedarnath</h3>
+          <div class="temple-quote">One of the 12 Jyotirlingas of Lord Shiva</div>
+          <div class="temple-meta">
+            <span class="tag">Lord Shiva</span>
+            <span class="tag">3,583 m</span>
+            <span class="tag">Opens Apr 22</span>
+          </div>
+          <ul>
+            <li>One of <strong>12 Jyotirlingas</strong> in India</li>
+            <li><strong>Adi Shankaracharya Samadhi</strong> behind the temple</li>
+            <li>Rebuilt after devastating 2013 floods</li>
+            <li>Snow-capped peaks as backdrop</li>
+            <li>Winter deity moved to <strong>Omkareshwar Temple, Ukhimath</strong></li>
+          </ul>
+          <h4>Trek</h4>
+          <ul>
+            <li>Start: Gaurikund (last motorable: Sonprayag, then jeep)</li>
+            <li>Distance: 16 km one way (was 14 km pre-2013, new route longer)</li>
+            <li>Time: 6-8 hrs up, 3-4 hrs down</li>
+            <li>Elevation gain: ~1,500 m</li>
+            <li>Options: Walk, pony (Rs 2-4K), palki, helicopter (Rs 7-8K)</li>
+          </ul>
+          <h4>April Weather</h4>
+          <ul>
+            <li>Avg: 5.6&deg;C | Min: 0.5&deg;C | Max: 10.8&deg;C</li>
+            <li>Light snow cover possible</li>
+            <li>Very cold at night - thermals mandatory</li>
+          </ul>
+        </div>
+
+        <!-- Badrinath -->
+        <div class="temple-card" id="temple-badrinath">
+          <div class="temple-dham-label">Dham 4 - Divya Desam</div>
+          <h3>Badrinath</h3>
+          <div class="temple-quote">The abode of Lord Vishnu, between Nar and Narayan peaks</div>
+          <div class="temple-meta">
+            <span class="tag">Lord Vishnu</span>
+            <span class="tag">3,133 m</span>
+            <span class="tag">Opens Apr 23</span>
+          </div>
+          <ul>
+            <li>One of <strong>108 Divya Desams</strong> (Vishnu temples)</li>
+            <li><strong>Tapt Kund</strong> - hot spring, holy dip before darshan</li>
+            <li><strong>Neelkanth Peak</strong> (6,509 m) as backdrop</li>
+            <li>No trek required - temple accessible by road</li>
+            <li>Banks of <strong>Alaknanda River</strong></li>
+          </ul>
+          <h4>Mana Village (3 km)</h4>
+          <ul>
+            <li>India's last village before Tibet</li>
+            <li><strong>Vyas Gufa</strong> - cave where Ved Vyas composed the Vedas and Mahabharata</li>
+            <li><strong>Bhim Pul</strong> - natural rock bridge over Saraswati River</li>
+            <li><strong>Saraswati River origin</strong> - emerges and disappears underground</li>
+            <li>Last chai shop of India</li>
+          </ul>
+        </div>
+
+        <!-- Triyuginarayan -->
+        <div class="temple-card full-width" id="temple-triyuginarayan">
+          <div class="temple-dham-label">Bonus - Divine Wedding Site</div>
+          <h3>Triyuginarayan</h3>
+          <div class="temple-quote">The eternal flame has burned since the divine wedding, across three yugas</div>
+          <div class="temple-meta">
+            <span class="tag">Lord Vishnu (Shiva-Parvati wedding)</span>
+            <span class="tag">1,980 m</span>
+            <span class="tag">No trek needed</span>
+          </div>
+          <p style="font-size:14px; color:var(--text-muted); font-family:-apple-system,sans-serif; margin-bottom:12px;">
+            Lord Shiva married Goddess Parvati here. Lord Vishnu performed <strong>kanyadaan</strong> as Parvati's brother. Lord Brahma was the priest. The sacred fire lit during the wedding has never been extinguished.
+          </p>
+          <ul>
+            <li><strong>Akhand Dhuni</strong> - eternal flame burning since the divine wedding (across 3 yugas)</li>
+            <li><strong>Brahma Shila</strong> - the exact stone where the marriage ceremony happened</li>
+            <li><strong>Three sacred kunds</strong>: Rudrakund, Vishnukund, Brahmakund</li>
+            <li><strong>Gauri Cave</strong> - 2 km walk, Parvati's meditation spot (optional)</li>
+            <li>Temple architecture mirrors Kedarnath Temple</li>
+            <li>Built/restored by Adi Shankaracharya</li>
+          </ul>
+          <p style="font-size:13px; color:var(--text-dim); margin-top:10px;">Most Char Dham packages skip this entirely. It's a 10-13 km detour from Sonprayag with no trek, and perfectly fills the post-Kedarnath afternoon. 1.5-2 hours is sufficient for full darshan and all kunds.</p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ==================== PLANNING ==================== -->
+    <div class="section" id="planning">
+      <h1 class="section-title">Planning & Logistics</h1>
+      <p class="section-subtitle">Everything you need, all in one place</p>
+
+      <div class="planning-grid">
+
+        <!-- Route Map -->
+        <div class="planning-card full-width" id="route-map">
+          <h3>Route Map & Panch Prayag Tracker</h3>
+
+          <pre>HARIDWAR (Day 1 start / Day 8 end)
+    |
+    |-- 180-215 km -- BARKOT (2 nights)
+    |                     |
+    |               Janki Chatti
+    |                     |
+    |               * Yamunotri (Day 2)
+    |               (5-7 km trek x 2)
+    |
+    |-- 82-120 km -- UTTARKASHI (1 night)
+    |                     |
+    |               100 km each way
+    |                     |
+    |               * Gangotri (Day 3)
+    |               (walk-in temple)
+    |
+    |-- 196-235 km -- SONPRAYAG/SITAPUR (1 night)
+    |                     |
+    |               16 km trek
+    |                     |
+    |               * Kedarnath (1 night at top)
+    |                     |
+    |               16 km trek down
+    |                     |
+    |               * Triyuginarayan (Day 6 afternoon)
+    |                     |
+    |               GUPTKASHI (1 night)
+    |
+    |-- 185 km -- * Badrinath (1 night)
+    |               + Mana Village
+    |
+    '-- 322 km -- HARIDWAR *</pre>
+
+          <h4>Panch Prayag Tracker</h4>
+          <p style="font-size:14px; color:var(--text-muted); font-family:-apple-system,sans-serif;">Five sacred river confluences witnessed during this yatra:</p>
+          <table>
+            <tr><th>#</th><th>Prayag</th><th>Rivers Merging</th><th>When</th></tr>
+            <tr><td>1</td><td><strong>Rudraprayag</strong></td><td>Alaknanda + Mandakini</td><td>Day 4</td></tr>
+            <tr><td>2</td><td><strong>Vishnuprayag</strong></td><td>Alaknanda + Dhauliganga</td><td>Day 7</td></tr>
+            <tr><td>3</td><td><strong>Nandprayag</strong></td><td>Alaknanda + Nandakini</td><td>Day 8</td></tr>
+            <tr><td>4</td><td><strong>Karnaprayag</strong></td><td>Alaknanda + Pindar</td><td>Day 8</td></tr>
+            <tr><td>5</td><td><strong>Devprayag</strong></td><td>Alaknanda + Bhagirathi = <strong>GANGA</strong></td><td>Day 8 - MUST STOP</td></tr>
+          </table>
+
+          <div class="checkbox-item"><input type="checkbox"> Rudraprayag witnessed</div>
+          <div class="checkbox-item"><input type="checkbox"> Vishnuprayag witnessed</div>
+          <div class="checkbox-item"><input type="checkbox"> Nandprayag witnessed</div>
+          <div class="checkbox-item"><input type="checkbox"> Karnaprayag witnessed</div>
+          <div class="checkbox-item"><input type="checkbox"> Devprayag witnessed - birth of the Ganga</div>
+        </div>
+
+        <!-- Packing Checklist -->
+        <div class="planning-card" id="packing">
+          <h3>Packing Checklist</h3>
+
+          <h4>Clothing</h4>
+          <div class="checkbox-item"><input type="checkbox"> Thermals (top + bottom) - for Kedarnath night (0-5&deg;C)</div>
+          <div class="checkbox-item"><input type="checkbox"> Fleece jacket</div>
+          <div class="checkbox-item"><input type="checkbox"> Windproof/waterproof outer jacket</div>
+          <div class="checkbox-item"><input type="checkbox"> Raincoat/poncho (April showers)</div>
+          <div class="checkbox-item"><input type="checkbox"> 3 pairs warm socks (wool preferred)</div>
+          <div class="checkbox-item"><input type="checkbox"> Comfortable trekking pants (2 pairs)</div>
+          <div class="checkbox-item"><input type="checkbox"> Warm cap/beanie</div>
+          <div class="checkbox-item"><input type="checkbox"> Gloves</div>
+
+          <h4>Footwear</h4>
+          <div class="checkbox-item"><input type="checkbox"> <strong>Trekking shoes</strong> - buy NOW, break in 2+ weeks</div>
+          <div class="checkbox-item"><input type="checkbox"> Flip flops for hotel + Tapt Kund (Badrinath)</div>
+
+          <h4>Trek Essentials</h4>
+          <div class="checkbox-item"><input type="checkbox"> Water bottle (2L capacity)</div>
+          <div class="checkbox-item"><input type="checkbox"> Dry fruits + energy bars</div>
+          <div class="checkbox-item"><input type="checkbox"> Torch/headlamp + extra batteries</div>
+          <div class="checkbox-item"><input type="checkbox"> Trekking pole (or rent at Gaurikund Rs 100-200)</div>
+          <div class="checkbox-item"><input type="checkbox"> Small daypack</div>
+
+          <h4>Electronics</h4>
+          <div class="checkbox-item"><input type="checkbox"> Power bank (10000+ mAh)</div>
+          <div class="checkbox-item"><input type="checkbox"> Phone charger</div>
+          <div class="checkbox-item"><input type="checkbox"> Camera (optional)</div>
+
+          <h4>Documents & Money</h4>
+          <div class="checkbox-item"><input type="checkbox"> Cash Rs 8-10K (ATMs unreliable in mountains)</div>
+          <div class="checkbox-item"><input type="checkbox"> Aadhaar printout</div>
+          <div class="checkbox-item"><input type="checkbox"> Registration QR code</div>
+          <div class="checkbox-item"><input type="checkbox"> ID proof photocopy</div>
+
+          <h4>Sun Protection</h4>
+          <div class="checkbox-item"><input type="checkbox"> Sunscreen SPF 50+</div>
+          <div class="checkbox-item"><input type="checkbox"> Sunglasses (high altitude sun is brutal)</div>
+          <div class="checkbox-item"><input type="checkbox"> Lip balm with SPF</div>
+
+          <h4>Medicines</h4>
+          <div class="checkbox-item"><input type="checkbox"> Diamox (altitude sickness - consult doctor first)</div>
+          <div class="checkbox-item"><input type="checkbox"> Paracetamol</div>
+          <div class="checkbox-item"><input type="checkbox"> ORS packets</div>
+          <div class="checkbox-item"><input type="checkbox"> Band-aids + moleskin (blisters)</div>
+          <div class="checkbox-item"><input type="checkbox"> Stomach medicine (Imodium/Norflox)</div>
+          <div class="checkbox-item"><input type="checkbox"> Personal prescriptions</div>
+
+          <h4>Pooja Samagri (5 temples)</h4>
+          <div class="checkbox-item"><input type="checkbox"> Coconut (5)</div>
+          <div class="checkbox-item"><input type="checkbox"> Red cloth</div>
+          <div class="checkbox-item"><input type="checkbox"> Incense sticks</div>
+          <div class="checkbox-item"><input type="checkbox"> Camphor</div>
+          <div class="checkbox-item"><input type="checkbox"> Prasad packets</div>
+          <div class="checkbox-item"><input type="checkbox"> Flowers (buy fresh at each location)</div>
+        </div>
+
+        <!-- Bookings Checklist -->
+        <div class="planning-card" id="bookings">
+          <h3>Bookings Checklist</h3>
+
+          <div class="callout callout-danger" style="margin-top:0;">
+            <div class="callout-title">Danger</div>
+            <div>Time-sensitive - Do these NOW</div>
+          </div>
+
+          <h4>Registration</h4>
+          <div class="checkbox-item"><input type="checkbox"> <strong>Char Dham Registration</strong> - registrationandtouristcare.uk.gov.in</div>
+          <ul style="margin-left:28px; font-size:13px; color:var(--text-muted);">
+            <li>Opens: March 20, 2026</li>
+            <li>Aadhaar-based login</li>
+            <li>WhatsApp: Send "YATRA" to 8394833833</li>
+            <li>Biometric mandatory for offline registration</li>
+            <li>Small fee (~Rs 10) may apply</li>
+          </ul>
+
+          <h4>Accommodation</h4>
+          <div class="checkbox-item"><input type="checkbox"> Barkot hotel (2 nights: Apr 18-19)</div>
+          <div class="checkbox-item"><input type="checkbox"> Uttarkashi hotel (1 night: Apr 20)</div>
+          <div class="checkbox-item"><input type="checkbox"> Sitapur/Phata hotel (1 night: Apr 21)</div>
+          <div class="checkbox-item"><input type="checkbox"> <strong>Kedarnath pukka building</strong> (1 night: Apr 22) - BOOK EARLY!</div>
+          <div class="checkbox-item"><input type="checkbox"> Guptkashi hotel (1 night: Apr 23)</div>
+          <div class="checkbox-item"><input type="checkbox"> Badrinath hotel (1 night: Apr 24)</div>
+
+          <h4>Transport</h4>
+          <div class="checkbox-item"><input type="checkbox"> Innova Crysta + dedicated driver (8 days, Uttarakhand experienced)</div>
+
+          <h4>Gear</h4>
+          <div class="checkbox-item"><input type="checkbox"> <strong>Trekking shoes</strong> - buy NOW, break in before trip</div>
+
+          <h4>Optional</h4>
+          <div class="checkbox-item"><input type="checkbox"> Kedarnath pony/porter (book at Gaurikund morning of Day 5)</div>
+          <div class="checkbox-item"><input type="checkbox"> Yamunotri pony (book at Janki Chatti morning of Day 2)</div>
+          <div class="checkbox-item"><input type="checkbox"> Helicopter backup for Kedarnath (Rs 7-8K, book weeks ahead)</div>
+        </div>
+
+        <!-- Budget Estimate -->
+        <div class="planning-card" id="budget">
+          <h3>Budget Estimate</h3>
+
+          <h4>Per Person (group of 2-3, shared costs)</h4>
+          <table>
+            <tr><th>Item</th><th>Estimate</th></tr>
+            <tr><td>Innova Crysta + driver (8 days)</td><td>Rs 35-42K total</td></tr>
+            <tr><td>Fuel (~1,500 km)</td><td>Rs 15-20K total</td></tr>
+            <tr><td>Hotels (7 nights)</td><td>Rs 10-15K</td></tr>
+            <tr><td>Food (8 days)</td><td>Rs 4-6K</td></tr>
+            <tr><td>Yamunotri pony (optional)</td><td>Rs 2-4K</td></tr>
+            <tr><td>Kedarnath pony (optional)</td><td>Rs 2-4K</td></tr>
+            <tr><td>Pooja samagri (5 temples)</td><td>Rs 1-2K</td></tr>
+            <tr><td>Misc (registration, tips, chai, parking, jeeps)</td><td>Rs 2-4K</td></tr>
+            <tr><td><strong>Total per person</strong></td><td><strong>Rs 24-32K</strong></td></tr>
+          </table>
+
+          <h4>Notes</h4>
+          <ul>
+            <li>Kedarnath helicopter (if needed): Rs 7-8K extra per person</li>
+            <li>Budget goes up significantly if traveling solo (car + driver not shared)</li>
+            <li>GMVN accommodations are cheapest but book fast</li>
+            <li>Carry cash - UPI/cards unreliable above Guptkashi</li>
+          </ul>
+        </div>
+
+        <!-- Wake-Up Schedule -->
+        <div class="planning-card" id="wakeup">
+          <h3>Wake-Up Schedule</h3>
+          <table>
+            <tr><th>Day</th><th>Date</th><th>Wake Up</th><th>Reason</th></tr>
+            <tr><td>1</td><td>Apr 18</td><td>6:00 AM</td><td>Drive to Barkot</td></tr>
+            <tr><td>2</td><td>Apr 19</td><td><strong>3:30 AM</strong></td><td>Yamunotri opening day trek</td></tr>
+            <tr><td>3</td><td>Apr 20</td><td><strong>4:30 AM</strong></td><td>Gangotri combo day</td></tr>
+            <tr><td>4</td><td>Apr 21</td><td>6:00 AM</td><td>Drive to Kedarnath base</td></tr>
+            <tr><td>5</td><td>Apr 22</td><td><strong>4:30 AM</strong></td><td>Kedarnath trek up</td></tr>
+            <tr><td>6</td><td>Apr 23</td><td><strong>4:30 AM</strong></td><td>Kedarnath darshan + down</td></tr>
+            <tr><td>7</td><td>Apr 24</td><td>6:00 AM</td><td>Drive to Badrinath</td></tr>
+            <tr><td>8</td><td>Apr 25</td><td>5:00 AM</td><td>Badrinath + drive home</td></tr>
+          </table>
+
+          <div class="callout callout-warning">
+            <div class="callout-title">Warning</div>
+            <div>The Crucible: Days 5-6. Two consecutive 4:30 AM wake-ups at altitude with heavy trekking. After that it's all driving.</div>
+          </div>
+        </div>
+
+        <!-- Risk Assessment -->
+        <div class="planning-card full-width" id="risk">
+          <h3>Risk Assessment & Contingencies</h3>
+
+          <div class="callout callout-warning" style="margin-top:0;">
+            <div class="callout-title">Warning</div>
+            <div>This plan has zero buffer days. Here's the triage plan.</div>
+          </div>
+
+          <h4>Scenario Responses</h4>
+          <table>
+            <tr><th>Scenario</th><th>Action</th></tr>
+            <tr><td>Bad weather Day 2</td><td>Push Yamunotri to Day 3 morning. Gangotri becomes Day 3 afternoon. Tight but possible</td></tr>
+            <tr><td>Road closure Day 3</td><td>Skip Gangotri. Drive directly to Uttarkashi, continue to Sonprayag next day</td></tr>
+            <tr><td>Sick/exhausted Day 5</td><td>Helicopter up (Rs 7-8K). Trek down next day</td></tr>
+            <tr><td>Running late Day 6</td><td>Drop Triyuginarayan. Go straight to Guptkashi</td></tr>
+            <tr><td>Road closure Day 7</td><td>Wait it out. Do Badrinath darshan + drive home both on Day 8 (brutal but possible)</td></tr>
+          </table>
+
+          <h4>Priority Order (if forced to skip)</h4>
+          <ol>
+            <li><strong>Triyuginarayan</strong> - nice to have, not a Dham</li>
+            <li><strong>Mana Village</strong> - can be skipped on Day 8</li>
+            <li><strong>Gangotri</strong> - if Day 3 fails (but try hard to keep all 4 Dhams)</li>
+          </ol>
+
+          <h4>Key Risks</h4>
+          <ul>
+            <li><strong>Mountain roads</strong>: Landslides, especially early season. Roads can close without warning</li>
+            <li><strong>Altitude sickness</strong>: Kedarnath at 3,583 m. Symptoms: headache, nausea, dizziness</li>
+            <li><strong>Opening day crowds</strong>: Yamunotri Day 2, Kedarnath Day 5 = heavy traffic</li>
+            <li><strong>Weather</strong>: April can bring sudden rain/snow at altitude</li>
+            <li><strong>Vehicle breakdown</strong>: Carry driver's mechanic contact. Innova Crysta is reliable but mountains are tough</li>
+          </ul>
+        </div>
+
+        <!-- Emergency Contacts -->
+        <div class="planning-card" id="emergency">
+          <h3>Emergency Contacts</h3>
+          <table>
+            <tr><th>Service</th><th>Number</th></tr>
+            <tr><td>Char Dham Yatra Control Room</td><td><strong>1364</strong></td></tr>
+            <tr><td>GMVN Helpline</td><td>0135-2746817</td></tr>
+            <tr><td>Kedarnath Disaster Helpline</td><td><strong>1070</strong></td></tr>
+            <tr><td>Uttarakhand Police</td><td><strong>112</strong></td></tr>
+            <tr><td>Registration helpline</td><td>0135-1364</td></tr>
+            <tr><td>Ambulance</td><td><strong>108</strong></td></tr>
+          </table>
+          <p style="font-size:13px; color:var(--text-dim); margin-top:10px;">Save these in your phone before leaving Haridwar. Network can be spotty above Guptkashi.</p>
+        </div>
+
+      </div><!-- /planning-grid -->
+    </div>
+
+  </div><!-- /content -->
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="om-footer">&#x1F549;</div>
+    <div class="mantra">Har Har Mahadev</div>
+    <div class="closing">8 days. 5 temples. 1,500 km. 48 km on foot. Come home transformed.</div>
+  </footer>
+
+</div><!-- /main -->
+
+<script>
+  // Sidebar toggle for mobile
+  function toggleSidebar() {
+    document.getElementById('sidebar').classList.toggle('open');
+    document.getElementById('overlay').classList.toggle('open');
+  }
+
+  // Close sidebar when clicking a link (mobile)
+  document.querySelectorAll('.sidebar a').forEach(function(link) {
+    link.addEventListener('click', function() {
+      if (window.innerWidth <= 768) {
+        toggleSidebar();
+      }
+    });
+  });
+
+  // Active sidebar link on scroll
+  var sections = document.querySelectorAll('.section, .day-header');
+  var navLinks = document.querySelectorAll('.sidebar a');
+
+  function setActiveLink() {
+    var scrollPos = window.scrollY + 80;
+    var targets = document.querySelectorAll('[id]');
+    var current = '';
+
+    targets.forEach(function(section) {
+      if (section.offsetTop <= scrollPos) {
+        current = section.id;
+      }
+    });
+
+    navLinks.forEach(function(link) {
+      link.classList.remove('active');
+      if (link.getAttribute('href') === '#' + current) {
+        link.classList.add('active');
+      }
+    });
+  }
+
+  window.addEventListener('scroll', setActiveLink);
+  setActiveLink();
+</script>
+
+</body>
+</html>
