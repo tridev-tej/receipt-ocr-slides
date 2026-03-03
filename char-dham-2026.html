@@ -785,15 +785,6 @@
       padding: 8px 10px;
     }
 
-    .photo-gallery {
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
-    }
-
-    .photo-gallery img {
-      height: 110px;
-    }
-
     .back-to-top {
       bottom: 16px;
       right: 16px;
@@ -894,6 +885,16 @@
   }
   a.img-link:hover {
     transform: scale(1.02);
+  }
+
+  @media (max-width: 768px) {
+    .photo-gallery {
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    .photo-gallery img {
+      height: 110px;
+    }
   }
 </style>
 </head>
