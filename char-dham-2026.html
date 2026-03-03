@@ -643,6 +643,42 @@
     align-items: center;
     justify-content: center;
     font-family: -apple-system, sans-serif;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+
+  /* Back to top */
+  .back-to-top {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 150;
+    background: var(--saffron);
+    color: #fff;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(232, 93, 4, 0.3);
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.3s, transform 0.3s, background 0.2s;
+    pointer-events: none;
+  }
+
+  .back-to-top.visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  .back-to-top:hover {
+    background: var(--saffron-glow);
+    box-shadow: 0 6px 16px rgba(232, 93, 4, 0.4);
   }
 
   .overlay {
@@ -748,6 +784,23 @@
     th, td {
       padding: 8px 10px;
     }
+
+    .photo-gallery {
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 8px;
+    }
+
+    .photo-gallery img {
+      height: 120px;
+    }
+
+    .back-to-top {
+      bottom: 16px;
+      right: 16px;
+      width: 40px;
+      height: 40px;
+      font-size: 18px;
+    }
   }
 
   .place-img {
@@ -758,6 +811,13 @@
     max-height: 280px;
     border: 1px solid var(--border);
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    background: linear-gradient(135deg, #f5e6d3 0%, #ffe0b2 100%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+
+  .place-img.loaded {
+    opacity: 1;
   }
 
   .temple-card .place-img {
@@ -789,6 +849,7 @@
     border: 1px solid var(--border);
     box-shadow: 0 2px 8px rgba(0,0,0,0.06);
     transition: transform 0.2s, box-shadow 0.2s;
+    text-decoration: none;
   }
 
   .photo-gallery a:hover {
@@ -798,16 +859,23 @@
 
   .photo-gallery img {
     width: 100%;
-    height: 140px;
+    height: 160px;
     object-fit: cover;
     display: block;
+    background: linear-gradient(135deg, #f5e6d3 0%, #ffe0b2 100%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+
+  .photo-gallery img.loaded {
+    opacity: 1;
   }
 
   .photo-gallery .photo-label {
     font-size: 11px;
     color: var(--text-dim);
     text-align: center;
-    padding: 4px 6px;
+    padding: 5px 6px;
     background: var(--bg-card);
     font-family: -apple-system, sans-serif;
   }
@@ -1000,9 +1068,9 @@
     <!-- ==================== DAY 1 ==================== -->
     <div class="section" id="day1">
       <div class="photo-gallery">
-        <a href="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Har_Ki_Pauri.jpg&width=1600" target="_blank"><img src="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Har_Ki_Pauri.jpg&width=400" alt="Har Ki Pauri" loading="lazy"><div class="photo-label">Har Ki Pauri, Haridwar</div></a>
-        <a href="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Haridwar.jpg&width=1600" target="_blank"><img src="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Haridwar.jpg&width=400" alt="Haridwar" loading="lazy"><div class="photo-label">Haridwar</div></a>
-        <a href="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Rishikesh.jpg&width=1600" target="_blank"><img src="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Rishikesh.jpg&width=400" alt="Rishikesh" loading="lazy"><div class="photo-label">Rishikesh (en route)</div></a>
+        <a href="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Har_Ki_Pauri.jpg&width=1600" target="_blank"><img src="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Har_Ki_Pauri.jpg&width=400" alt="Har Ki Pauri" loading="lazy" decoding="async"><div class="photo-label">Har Ki Pauri, Haridwar</div></a>
+        <a href="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Haridwar.jpg&width=1600" target="_blank"><img src="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Haridwar.jpg&width=400" alt="Haridwar" loading="lazy" decoding="async"><div class="photo-label">Haridwar</div></a>
+        <a href="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Rishikesh.jpg&width=1600" target="_blank"><img src="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Rishikesh.jpg&width=400" alt="Rishikesh" loading="lazy" decoding="async"><div class="photo-label">Rishikesh (en route)</div></a>
       </div>
       <div class="day-header">
         <h2>Day 1 | Apr 18 (Sat)</h2>
@@ -1046,9 +1114,9 @@
     <!-- ==================== DAY 2 ==================== -->
     <div class="section" id="day2">
       <div class="photo-gallery">
-        <a href="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Yamunotri_Temple.jpg&width=1600" target="_blank"><img src="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Yamunotri_Temple.jpg&width=400" alt="Yamunotri Temple" loading="lazy"><div class="photo-label">Yamunotri Temple</div></a>
-        <a href="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Yamunotri_shrine.jpg&width=1600" target="_blank"><img src="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Yamunotri_shrine.jpg&width=400" alt="Yamunotri Shrine" loading="lazy"><div class="photo-label">Yamunotri Shrine</div></a>
-        <a href="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Uttarkashi.jpg&width=1600" target="_blank"><img src="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Uttarkashi.jpg&width=400" alt="Uttarkashi" loading="lazy"><div class="photo-label">Uttarkashi (night stay)</div></a>
+        <a href="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Yamunotri_Temple.jpg&width=1600" target="_blank"><img src="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Yamunotri_Temple.jpg&width=400" alt="Yamunotri Temple" loading="lazy" decoding="async"><div class="photo-label">Yamunotri Temple</div></a>
+        <a href="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Yamunotri_shrine.jpg&width=1600" target="_blank"><img src="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Yamunotri_shrine.jpg&width=400" alt="Yamunotri Shrine" loading="lazy" decoding="async"><div class="photo-label">Yamunotri Shrine</div></a>
+        <a href="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Uttarkashi.jpg&width=1600" target="_blank"><img src="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Uttarkashi.jpg&width=400" alt="Uttarkashi" loading="lazy" decoding="async"><div class="photo-label">Uttarkashi (night stay)</div></a>
       </div>
       <div class="day-header">
         <h2>Day 2 | Apr 19 (Sun) | YAMUNOTRI - Opening Day &rarr; Uttarkashi</h2>
@@ -1091,10 +1159,10 @@
     <!-- ==================== DAY 3 ==================== -->
     <div class="section" id="day3">
       <div class="photo-gallery">
-        <a href="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Gangotri_Temple_WTK20150915-DSC_0087.jpg&width=1600" target="_blank"><img src="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Gangotri_Temple_WTK20150915-DSC_0087.jpg&width=400" alt="Gangotri Temple" loading="lazy"><div class="photo-label">Gangotri Temple</div></a>
-        <a href="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Gangotri_Ganga_Temple.jpg&width=1600" target="_blank"><img src="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Gangotri_Ganga_Temple.jpg&width=400" alt="Gangotri Ganga Temple" loading="lazy"><div class="photo-label">Temple & Bhagirathi</div></a>
-        <a href="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Bhagirathi_River.jpg&width=1600" target="_blank"><img src="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Bhagirathi_River.jpg&width=400" alt="Bhagirathi River" loading="lazy"><div class="photo-label">Bhagirathi River</div></a>
-        <a href="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Harsil_Valley.jpg&width=1600" target="_blank"><img src="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Harsil_Valley.jpg&width=400" alt="Harsil Valley" loading="lazy"><div class="photo-label">Harsil Valley (en route)</div></a>
+        <a href="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Gangotri_Temple_WTK20150915-DSC_0087.jpg&width=1600" target="_blank"><img src="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Gangotri_Temple_WTK20150915-DSC_0087.jpg&width=400" alt="Gangotri Temple" loading="lazy" decoding="async"><div class="photo-label">Gangotri Temple</div></a>
+        <a href="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Gangotri_Ganga_Temple.jpg&width=1600" target="_blank"><img src="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Gangotri_Ganga_Temple.jpg&width=400" alt="Gangotri Ganga Temple" loading="lazy" decoding="async"><div class="photo-label">Temple & Bhagirathi</div></a>
+        <a href="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Bhagirathi_River.jpg&width=1600" target="_blank"><img src="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Bhagirathi_River.jpg&width=400" alt="Bhagirathi River" loading="lazy" decoding="async"><div class="photo-label">Bhagirathi River</div></a>
+        <a href="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Harsil_Valley.jpg&width=1600" target="_blank"><img src="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Harsil_Valley.jpg&width=400" alt="Harsil Valley" loading="lazy" decoding="async"><div class="photo-label">Harsil Valley (en route)</div></a>
       </div>
       <div class="day-header">
         <h2>Day 3 | Apr 20 (Mon) | GANGOTRI Darshan &rarr; Uttarkashi</h2>
@@ -1126,7 +1194,7 @@
         </table>
 
         <h2>Route Highlights</h2>
-        <a class="img-link" href="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Harsil_Valley.jpg&width=1600" target="_blank"><img class="place-img" src="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Harsil_Valley.jpg&width=800" alt="Harsil Valley, Uttarakhand" loading="lazy"></a>
+        <a class="img-link" href="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Harsil_Valley.jpg&width=1600" target="_blank"><img class="place-img" src="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Harsil_Valley.jpg&width=800" alt="Harsil Valley, Uttarakhand" loading="lazy" decoding="async"></a>
         <div class="img-caption">Harsil Valley - click to view full size</div>
         <ul>
           <li><strong>Harsil Valley</strong>: One of the most stunning stretches in Garhwal (Uttarkashi-Gangotri)</li>
@@ -1139,9 +1207,9 @@
     <!-- ==================== DAY 4 ==================== -->
     <div class="section" id="day4">
       <div class="photo-gallery">
-        <a href="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Rudraprayag.jpg&width=1600" target="_blank"><img src="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Rudraprayag.jpg&width=400" alt="Rudraprayag" loading="lazy"><div class="photo-label">Rudraprayag - Panch Prayag #1</div></a>
-        <a href="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Alaknanda_River.jpg&width=1600" target="_blank"><img src="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Alaknanda_River.jpg&width=400" alt="Alaknanda River" loading="lazy"><div class="photo-label">Alaknanda River</div></a>
-        <a href="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Mandakini_River.jpg&width=1600" target="_blank"><img src="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Mandakini_River.jpg&width=400" alt="Mandakini River" loading="lazy"><div class="photo-label">Mandakini River</div></a>
+        <a href="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Rudraprayag_Sangam.jpg&width=1600" target="_blank"><img src="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Rudraprayag_Sangam.jpg&width=400" alt="Rudraprayag Confluence" loading="lazy" decoding="async"><div class="photo-label">Rudraprayag - Panch Prayag #1</div></a>
+        <a href="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Alaknanda_River.jpg&width=1600" target="_blank"><img src="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Alaknanda_River.jpg&width=400" alt="Alaknanda River" loading="lazy" decoding="async"><div class="photo-label">Alaknanda River</div></a>
+        <a href="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Mandakini_River.jpg&width=1600" target="_blank"><img src="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Mandakini_River.jpg&width=400" alt="Mandakini River" loading="lazy" decoding="async"><div class="photo-label">Mandakini River</div></a>
       </div>
       <div class="day-header">
         <h2>Day 4 | Apr 21 (Tue) | Uttarkashi &rarr; Sitapur/Phata</h2>
@@ -1191,9 +1259,9 @@
     <!-- ==================== DAY 5 ==================== -->
     <div class="section" id="day5">
       <div class="photo-gallery">
-        <a href="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Kedarnath_trek.jpg&width=1600" target="_blank"><img src="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Kedarnath_trek.jpg&width=400" alt="Kedarnath Trek" loading="lazy"><div class="photo-label">Kedarnath Trek Path</div></a>
-        <a href="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Kedarnath_Temple.jpg&width=1600" target="_blank"><img src="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Kedarnath_Temple.jpg&width=400" alt="Kedarnath Temple" loading="lazy"><div class="photo-label">Kedarnath Temple</div></a>
-        <a href="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Bheem_Shila.jpg&width=1600" target="_blank"><img src="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Bheem_Shila.jpg&width=400" alt="Bheem Shila" loading="lazy"><div class="photo-label">Bheem Shila (saved the temple in 2013)</div></a>
+        <a href="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Kedarnath_trek.jpg&width=1600" target="_blank"><img src="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Kedarnath_trek.jpg&width=400" alt="Kedarnath Trek" loading="lazy" decoding="async"><div class="photo-label">Kedarnath Trek Path</div></a>
+        <a href="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Kedarnath_Temple.jpg&width=1600" target="_blank"><img src="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Kedarnath_Temple.jpg&width=400" alt="Kedarnath Temple" loading="lazy" decoding="async"><div class="photo-label">Kedarnath Temple</div></a>
+        <a href="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Bheem_Shila.jpg&width=1600" target="_blank"><img src="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Bheem_Shila.jpg&width=400" alt="Bheem Shila" loading="lazy" decoding="async"><div class="photo-label">Bheem Shila (saved the temple in 2013)</div></a>
       </div>
       <div class="day-header">
         <h2>Day 5 | Apr 22 (Wed) | KEDARNATH Trek Up - Opening Day - HARDEST DAY</h2>
@@ -1257,8 +1325,8 @@
     <!-- ==================== DAY 6 ==================== -->
     <div class="section" id="day6">
       <div class="photo-gallery">
-        <a href="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Kedarnath_Temple.jpg&width=1600" target="_blank"><img src="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Kedarnath_Temple.jpg&width=400" alt="Kedarnath Temple" loading="lazy"><div class="photo-label">Kedarnath Temple - Darshan day</div></a>
-        <a href="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Mandakini_River.jpg&width=1600" target="_blank"><img src="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Mandakini_River.jpg&width=400" alt="Mandakini River" loading="lazy"><div class="photo-label">Mandakini River (trek down)</div></a>
+        <a href="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Kedarnath_Temple.jpg&width=1600" target="_blank"><img src="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Kedarnath_Temple.jpg&width=400" alt="Kedarnath Temple" loading="lazy" decoding="async"><div class="photo-label">Kedarnath Temple - Darshan day</div></a>
+        <a href="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Mandakini_River.jpg&width=1600" target="_blank"><img src="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Mandakini_River.jpg&width=400" alt="Mandakini River" loading="lazy" decoding="async"><div class="photo-label">Mandakini River (trek down)</div></a>
       </div>
       <div class="day-header">
         <h2>Day 6 | Apr 23 (Thu) | KEDARNATH Darshan + Trek Down</h2>
@@ -1295,10 +1363,10 @@
     <!-- ==================== DAY 7 ==================== -->
     <div class="section" id="day7">
       <div class="photo-gallery">
-        <a href="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Chopta,_Uttarakhand.jpg&width=1600" target="_blank"><img src="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Chopta,_Uttarakhand.jpg&width=400" alt="Chopta meadows" loading="lazy"><div class="photo-label">Chopta Meadows (en route)</div></a>
-        <a href="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Vishnuprayag.jpg&width=1600" target="_blank"><img src="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Vishnuprayag.jpg&width=400" alt="Vishnuprayag" loading="lazy"><div class="photo-label">Vishnuprayag - Panch Prayag #2</div></a>
-        <a href="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Badrinath_Temple,_Uttarakhand.jpg&width=1600" target="_blank"><img src="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Badrinath_Temple,_Uttarakhand.jpg&width=400" alt="Badrinath Temple" loading="lazy"><div class="photo-label">Badrinath Temple (destination)</div></a>
-        <a href="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Joshimath.jpg&width=1600" target="_blank"><img src="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Joshimath.jpg&width=400" alt="Joshimath" loading="lazy"><div class="photo-label">Joshimath (en route)</div></a>
+        <a href="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Chopta,_Uttarakhand.jpg&width=1600" target="_blank"><img src="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Chopta,_Uttarakhand.jpg&width=400" alt="Chopta meadows" loading="lazy" decoding="async"><div class="photo-label">Chopta Meadows (en route)</div></a>
+        <a href="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Vishnuprayag.jpg&width=1600" target="_blank"><img src="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Vishnuprayag.jpg&width=400" alt="Vishnuprayag" loading="lazy" decoding="async"><div class="photo-label">Vishnuprayag - Panch Prayag #2</div></a>
+        <a href="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Badrinath_Temple,_Uttarakhand.jpg&width=1600" target="_blank"><img src="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Badrinath_Temple,_Uttarakhand.jpg&width=400" alt="Badrinath Temple" loading="lazy" decoding="async"><div class="photo-label">Badrinath Temple (destination)</div></a>
+        <a href="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Joshimath.jpg&width=1600" target="_blank"><img src="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Joshimath.jpg&width=400" alt="Joshimath" loading="lazy" decoding="async"><div class="photo-label">Joshimath (en route)</div></a>
       </div>
       <div class="day-header">
         <h2>Day 7 | Apr 24 (Fri) | Sitapur/Phata &rarr; BADRINATH - Opening Day</h2>
@@ -1342,10 +1410,10 @@
     <!-- ==================== DAY 8 ==================== -->
     <div class="section" id="day8">
       <div class="photo-gallery">
-        <a href="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Badrinath.jpg&width=1600" target="_blank"><img src="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Badrinath.jpg&width=400" alt="Badrinath" loading="lazy"><div class="photo-label">Badrinath Town</div></a>
-        <a href="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Neelkantha_Peak-_View_from_Badrinath.jpg&width=1600" target="_blank"><img src="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Neelkantha_Peak-_View_from_Badrinath.jpg&width=400" alt="Neelkanth Peak" loading="lazy"><div class="photo-label">Neelkanth Peak from Badrinath</div></a>
-        <a href="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Mana_Village.jpg&width=1600" target="_blank"><img src="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Mana_Village.jpg&width=400" alt="Mana Village" loading="lazy"><div class="photo-label">Mana - last village of India</div></a>
-        <a href="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Vyas_Gufa.jpg&width=1600" target="_blank"><img src="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Vyas_Gufa.jpg&width=400" alt="Vyas Gufa" loading="lazy"><div class="photo-label">Vyas Gufa (Vedas composed here)</div></a>
+        <a href="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Badrinath.jpg&width=1600" target="_blank"><img src="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Badrinath.jpg&width=400" alt="Badrinath" loading="lazy" decoding="async"><div class="photo-label">Badrinath Town</div></a>
+        <a href="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Neelkantha_Peak-_View_from_Badrinath.jpg&width=1600" target="_blank"><img src="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Neelkantha_Peak-_View_from_Badrinath.jpg&width=400" alt="Neelkanth Peak" loading="lazy" decoding="async"><div class="photo-label">Neelkanth Peak from Badrinath</div></a>
+        <a href="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Mana_Village.jpg&width=1600" target="_blank"><img src="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Mana_Village.jpg&width=400" alt="Mana Village" loading="lazy" decoding="async"><div class="photo-label">Mana - last village of India</div></a>
+        <a href="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Vyas_Gufa.jpg&width=1600" target="_blank"><img src="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Vyas_Gufa.jpg&width=400" alt="Vyas Gufa" loading="lazy" decoding="async"><div class="photo-label">Vyas Gufa (Vedas composed here)</div></a>
       </div>
       <div class="day-header">
         <h2>Day 8 | Apr 25 (Sat) | Badrinath Darshan + Mana &rarr; Rudraprayag</h2>
@@ -1386,9 +1454,9 @@
     <!-- ==================== DAY 9 ==================== -->
     <div class="section" id="day9">
       <div class="photo-gallery">
-        <a href="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/DevPrayag.jpg&width=1600" target="_blank"><img src="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/DevPrayag.jpg&width=400" alt="Devprayag" loading="lazy"><div class="photo-label">Devprayag - birth of the Ganga</div></a>
-        <a href="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Laxman_Jhula.jpg&width=1600" target="_blank"><img src="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Laxman_Jhula.jpg&width=400" alt="Laxman Jhula" loading="lazy"><div class="photo-label">Laxman Jhula, Rishikesh</div></a>
-        <a href="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Ram_Jhula.jpg&width=1600" target="_blank"><img src="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Ram_Jhula.jpg&width=400" alt="Ram Jhula" loading="lazy"><div class="photo-label">Ram Jhula, Rishikesh</div></a>
+        <a href="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/DevPrayag.jpg&width=1600" target="_blank"><img src="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/DevPrayag.jpg&width=400" alt="Devprayag" loading="lazy" decoding="async"><div class="photo-label">Devprayag - birth of the Ganga</div></a>
+        <a href="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Laxman_Jhula.jpg&width=1600" target="_blank"><img src="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Laxman_Jhula.jpg&width=400" alt="Laxman Jhula" loading="lazy" decoding="async"><div class="photo-label">Laxman Jhula, Rishikesh</div></a>
+        <a href="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Ram_Jhula.jpg&width=1600" target="_blank"><img src="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Ram_Jhula.jpg&width=400" alt="Ram Jhula" loading="lazy" decoding="async"><div class="photo-label">Ram Jhula, Rishikesh</div></a>
       </div>
       <div class="day-header">
         <h2>Day 9 | Apr 26 (Sun) | Rudraprayag &rarr; Dehradun Airport - YATRA COMPLETE</h2>
@@ -1446,7 +1514,7 @@
         <div class="temple-card" id="temple-yamunotri">
           <div class="temple-dham-label">Dham 1</div>
           <h3>Yamunotri</h3>
-          <a class="img-link" href="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Yamunotri_Temple.jpg&width=1600" target="_blank"><img class="place-img" src="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Yamunotri_Temple.jpg&width=800" alt="Yamunotri Temple" loading="lazy"></a>
+          <a class="img-link" href="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Yamunotri_Temple.jpg&width=1600" target="_blank"><img class="place-img" src="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Yamunotri_Temple.jpg&width=800" alt="Yamunotri Temple" loading="lazy" decoding="async"></a>
           <div class="temple-quote">Source of the sacred Yamuna River</div>
           <div class="temple-meta">
             <span class="tag">Goddess Yamuna</span>
@@ -1473,7 +1541,7 @@
         <div class="temple-card" id="temple-gangotri">
           <div class="temple-dham-label">Dham 2</div>
           <h3>Gangotri</h3>
-          <a class="img-link" href="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Gangotri_Temple_WTK20150915-DSC_0087.jpg&width=1600" target="_blank"><img class="place-img" src="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Gangotri_Temple_WTK20150915-DSC_0087.jpg&width=800" alt="Gangotri Temple" loading="lazy"></a>
+          <a class="img-link" href="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Gangotri_Temple_WTK20150915-DSC_0087.jpg&width=1600" target="_blank"><img class="place-img" src="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Gangotri_Temple_WTK20150915-DSC_0087.jpg&width=800" alt="Gangotri Temple" loading="lazy" decoding="async"></a>
           <div class="temple-quote">Where the holy Ganga first touched Earth</div>
           <div class="temple-meta">
             <span class="tag">Goddess Ganga</span>
@@ -1498,7 +1566,7 @@
         <div class="temple-card" id="temple-kedarnath">
           <div class="temple-dham-label">Dham 3 - Jyotirlinga</div>
           <h3>Kedarnath</h3>
-          <a class="img-link" href="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Kedarnath_Temple.jpg&width=1600" target="_blank"><img class="place-img" src="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Kedarnath_Temple.jpg&width=800" alt="Kedarnath Temple with snow peaks" loading="lazy"></a>
+          <a class="img-link" href="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Kedarnath_Temple.jpg&width=1600" target="_blank"><img class="place-img" src="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Kedarnath_Temple.jpg&width=800" alt="Kedarnath Temple with snow peaks" loading="lazy" decoding="async"></a>
           <div class="temple-quote">One of the 12 Jyotirlingas of Lord Shiva</div>
           <div class="temple-meta">
             <span class="tag">Lord Shiva</span>
@@ -1532,7 +1600,7 @@
         <div class="temple-card" id="temple-badrinath">
           <div class="temple-dham-label">Dham 4 - Divya Desam</div>
           <h3>Badrinath</h3>
-          <a class="img-link" href="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Badrinath_Temple,_Uttarakhand.jpg&width=1600" target="_blank"><img class="place-img" src="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Badrinath_Temple,_Uttarakhand.jpg&width=800" alt="Badrinath Temple with Neelkanth Peak" loading="lazy"></a>
+          <a class="img-link" href="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Badrinath_Temple,_Uttarakhand.jpg&width=1600" target="_blank"><img class="place-img" src="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Badrinath_Temple,_Uttarakhand.jpg&width=800" alt="Badrinath Temple with Neelkanth Peak" loading="lazy" decoding="async"></a>
           <div class="temple-quote">The abode of Lord Vishnu, between Nar and Narayan peaks</div>
           <div class="temple-meta">
             <span class="tag">Lord Vishnu</span>
@@ -1834,6 +1902,9 @@
 
 </div><!-- /main -->
 
+<!-- Back to top -->
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">&uarr;</button>
+
 <script>
   // Sidebar toggle for mobile
   function toggleSidebar() {
@@ -1850,11 +1921,12 @@
     });
   });
 
-  // Active sidebar link on scroll
-  var sections = document.querySelectorAll('.section, .day-header');
+  // Active sidebar link on scroll + back-to-top visibility
   var navLinks = document.querySelectorAll('.sidebar a');
+  var backToTop = document.getElementById('backToTop');
 
-  function setActiveLink() {
+  function onScroll() {
+    // Active sidebar link
     var scrollPos = window.scrollY + 80;
     var targets = document.querySelectorAll('[id]');
     var current = '';
@@ -1871,10 +1943,27 @@
         link.classList.add('active');
       }
     });
+
+    // Back to top button
+    if (window.scrollY > 600) {
+      backToTop.classList.add('visible');
+    } else {
+      backToTop.classList.remove('visible');
+    }
   }
 
-  window.addEventListener('scroll', setActiveLink);
-  setActiveLink();
+  window.addEventListener('scroll', onScroll);
+  onScroll();
+
+  // Image fade-in on load
+  document.querySelectorAll('.photo-gallery img, .place-img').forEach(function(img) {
+    if (img.complete) {
+      img.classList.add('loaded');
+    } else {
+      img.addEventListener('load', function() { img.classList.add('loaded'); });
+      img.addEventListener('error', function() { img.classList.add('loaded'); });
+    }
+  });
 </script>
 
 </body>
