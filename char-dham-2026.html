@@ -3,29 +3,29 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%238B0000'/><text x='50' y='50' font-size='50' text-anchor='middle' dominant-baseline='central'>🕉</text></svg>">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%23e85d04'/><text x='50' y='50' font-size='50' text-anchor='middle' dominant-baseline='central'>🕉</text></svg>">
 <title>The Most Auspicious Trip</title>
 <style>
   :root {
-    --bg: #0f0f0f;
-    --bg-card: #1a1a1a;
-    --bg-sidebar: #141414;
-    --bg-hover: #252525;
-    --text: #e8e0d8;
-    --text-muted: #9a918a;
-    --text-dim: #6b6360;
-    --saffron: #e8943a;
-    --saffron-glow: #f0a050;
-    --saffron-dark: #b06a1a;
-    --gold: #d4a855;
-    --border: #2a2520;
-    --border-light: #3a332d;
-    --red: #e05555;
-    --green: #5eb86c;
-    --blue: #5b9bd5;
-    --purple: #a87fd4;
-    --yellow: #d4b855;
-    --cyan: #5bbfbf;
+    --bg: #fef9f0;
+    --bg-card: #ffffff;
+    --bg-sidebar: #fff8ee;
+    --bg-hover: #fff0d6;
+    --text: #2d1810;
+    --text-muted: #6b4c3a;
+    --text-dim: #9a7a62;
+    --saffron: #e85d04;
+    --saffron-glow: #dc2f02;
+    --saffron-dark: #d00000;
+    --gold: #c77800;
+    --border: #f0d9b5;
+    --border-light: #e8c99b;
+    --red: #d00000;
+    --green: #2d8a4e;
+    --blue: #0077b6;
+    --purple: #7b2d8e;
+    --yellow: #e09200;
+    --cyan: #0096c7;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -111,7 +111,7 @@
   .sidebar a.active {
     color: var(--saffron);
     border-left-color: var(--saffron);
-    background: rgba(232, 148, 58, 0.06);
+    background: rgba(232, 93, 4, 0.08);
   }
 
   /* Main */
@@ -122,7 +122,7 @@
 
   /* Hero */
   .hero {
-    background: linear-gradient(135deg, #1a0f05 0%, #2a1508 30%, #1a1008 60%, #0f0f0f 100%);
+    background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 30%, #ffcc80 60%, #ffecd2 100%);
     padding: 100px 60px 80px;
     text-align: center;
     position: relative;
@@ -138,8 +138,8 @@
     right: 0;
     bottom: 0;
     background:
-      radial-gradient(ellipse at 30% 20%, rgba(232, 148, 58, 0.08) 0%, transparent 60%),
-      radial-gradient(ellipse at 70% 80%, rgba(212, 168, 85, 0.05) 0%, transparent 60%);
+      radial-gradient(ellipse at 30% 20%, rgba(232, 93, 4, 0.12) 0%, transparent 60%),
+      radial-gradient(ellipse at 70% 80%, rgba(220, 47, 2, 0.08) 0%, transparent 60%);
     pointer-events: none;
   }
 
@@ -250,7 +250,7 @@
 
   /* Day cards */
   .day-header {
-    background: linear-gradient(135deg, var(--bg-card) 0%, #1e1810 100%);
+    background: linear-gradient(135deg, #ffffff 0%, #fff5e6 100%);
     border: 1px solid var(--border);
     border-left: 4px solid var(--saffron);
     border-radius: 8px;
@@ -281,6 +281,7 @@
     border-radius: 8px;
     padding: 28px 32px;
     margin-bottom: 40px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
   }
 
   .day-section h2 { margin-top: 24px; }
@@ -296,7 +297,7 @@
   }
 
   th {
-    background: rgba(232, 148, 58, 0.1);
+    background: rgba(232, 93, 4, 0.1);
     color: var(--saffron);
     font-weight: 600;
     text-align: left;
@@ -316,7 +317,7 @@
 
   tr:last-child td { border-bottom: none; }
 
-  tr:hover td { background: rgba(232, 148, 58, 0.03); }
+  tr:hover td { background: rgba(232, 93, 4, 0.05); }
 
   /* Callouts */
   .callout {
@@ -340,7 +341,7 @@
   }
 
   .callout-quote {
-    background: rgba(168, 127, 212, 0.06);
+    background: #f3e8ff;
     border-color: var(--purple);
   }
   .callout-quote .callout-title { color: var(--purple); }
@@ -352,37 +353,37 @@
   }
 
   .callout-tip {
-    background: rgba(94, 184, 108, 0.06);
+    background: #e8f5e9;
     border-color: var(--green);
   }
   .callout-tip .callout-title { color: var(--green); }
 
   .callout-warning, .callout-caution {
-    background: rgba(212, 184, 85, 0.06);
+    background: #fff8e1;
     border-color: var(--yellow);
   }
   .callout-warning .callout-title, .callout-caution .callout-title { color: var(--yellow); }
 
   .callout-danger {
-    background: rgba(224, 85, 85, 0.06);
+    background: #ffeaea;
     border-color: var(--red);
   }
   .callout-danger .callout-title { color: var(--red); }
 
   .callout-success {
-    background: rgba(94, 184, 108, 0.06);
+    background: #e8f5e9;
     border-color: var(--green);
   }
   .callout-success .callout-title { color: var(--green); }
 
   .callout-info {
-    background: rgba(91, 155, 213, 0.06);
+    background: #e3f2fd;
     border-color: var(--blue);
   }
   .callout-info .callout-title { color: var(--blue); }
 
   .callout-note {
-    background: rgba(91, 155, 213, 0.06);
+    background: #e3f2fd;
     border-color: var(--blue);
   }
   .callout-note .callout-title { color: var(--blue); }
@@ -405,7 +406,7 @@
     height: 18px;
     border: 2px solid var(--border-light);
     border-radius: 4px;
-    background: transparent;
+    background: #fff;
     cursor: pointer;
     flex-shrink: 0;
     margin-top: 2px;
@@ -425,7 +426,7 @@
     top: 1px;
     width: 5px;
     height: 10px;
-    border: solid var(--bg);
+    border: solid #fff;
     border-width: 0 2px 2px 0;
     transform: rotate(45deg);
   }
@@ -436,7 +437,7 @@
 
   /* Code blocks */
   pre {
-    background: #0a0a0a;
+    background: #fdf6ec;
     border: 1px solid var(--border);
     border-radius: 6px;
     padding: 20px 24px;
@@ -482,12 +483,14 @@
     border: 1px solid var(--border);
     border-radius: 10px;
     padding: 24px 24px 20px;
-    transition: border-color 0.2s, transform 0.2s;
+    transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
   }
 
   .temple-card:hover {
     border-color: var(--saffron-dark);
     transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(232, 93, 4, 0.12);
   }
 
   .temple-card.full-width {
@@ -530,7 +533,7 @@
   }
 
   .temple-card .temple-meta .tag {
-    background: rgba(232, 148, 58, 0.08);
+    background: rgba(232, 93, 4, 0.08);
     border: 1px solid var(--border);
     padding: 3px 10px;
     border-radius: 20px;
@@ -560,6 +563,7 @@
     border: 1px solid var(--border);
     border-radius: 10px;
     padding: 24px 24px 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
   }
 
   .planning-card.full-width {
@@ -598,7 +602,7 @@
     text-align: center;
     padding: 48px 20px 56px;
     border-top: 1px solid var(--border);
-    background: linear-gradient(180deg, var(--bg) 0%, #1a0f05 100%);
+    background: linear-gradient(180deg, var(--bg) 0%, #ffe0b2 100%);
   }
 
   .footer .om-footer {
@@ -645,7 +649,7 @@
     display: none;
     position: fixed;
     inset: 0;
-    background: rgba(0,0,0,0.6);
+    background: rgba(0,0,0,0.3);
     z-index: 90;
   }
 
@@ -753,11 +757,22 @@
     object-fit: cover;
     max-height: 280px;
     border: 1px solid var(--border);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   }
 
   .temple-card .place-img {
     max-height: 200px;
     margin: 8px 0 12px;
+  }
+
+  .day-hero-img {
+    width: 100%;
+    border-radius: 10px;
+    margin: 0 0 20px;
+    object-fit: cover;
+    height: 200px;
+    border: 1px solid var(--border);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
   }
 
   .img-caption {
@@ -939,6 +954,7 @@
 
     <!-- ==================== DAY 1 ==================== -->
     <div class="section" id="day1">
+      <img class="day-hero-img" src="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Har_Ki_Pauri.jpg&width=900" alt="Har Ki Pauri, Haridwar" loading="lazy">
       <div class="day-header">
         <h2>Day 1 | Apr 18 (Sat)</h2>
         <p class="day-meta">Haridwar &rarr; Jankichatti &nbsp;&middot;&nbsp; <strong>200 km</strong> &nbsp;&middot;&nbsp; 7-8 hrs drive &nbsp;&middot;&nbsp; Wake up: 6:00 AM</p>
@@ -980,6 +996,7 @@
 
     <!-- ==================== DAY 2 ==================== -->
     <div class="section" id="day2">
+      <img class="day-hero-img" src="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Yamunotri_Temple.jpg&width=900" alt="Yamunotri Temple" loading="lazy">
       <div class="day-header">
         <h2>Day 2 | Apr 19 (Sun) | YAMUNOTRI - Opening Day &rarr; Uttarkashi</h2>
         <p class="day-meta">Trek: <strong>12 km round trip on foot</strong> (6 km x 2, ~8-9 hrs) &nbsp;&middot;&nbsp; Drive: ~130 km to Uttarkashi &nbsp;&middot;&nbsp; Wake up: <strong>4:00 AM</strong></p>
@@ -1020,6 +1037,7 @@
 
     <!-- ==================== DAY 3 ==================== -->
     <div class="section" id="day3">
+      <img class="day-hero-img" src="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Gangotri_Temple_WTK20150915-DSC_0087.jpg&width=900" alt="Gangotri Temple" loading="lazy">
       <div class="day-header">
         <h2>Day 3 | Apr 20 (Mon) | GANGOTRI Darshan &rarr; Uttarkashi</h2>
         <p class="day-meta">Drive: <strong>200 km round trip</strong> (100 km each way) &nbsp;&middot;&nbsp; ~8 hrs total &nbsp;&middot;&nbsp; Wake up: <strong>6:00 AM</strong></p>
@@ -1062,6 +1080,7 @@
 
     <!-- ==================== DAY 4 ==================== -->
     <div class="section" id="day4">
+      <img class="day-hero-img" src="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Rudraprayag.jpg&width=900" alt="Rudraprayag - Panch Prayag" loading="lazy">
       <div class="day-header">
         <h2>Day 4 | Apr 21 (Tue) | Uttarkashi &rarr; Sitapur/Phata</h2>
         <p class="day-meta">Distance: <strong>220 km</strong> &nbsp;&middot;&nbsp; 8-9 hrs drive &nbsp;&middot;&nbsp; Wake up: 6:00 AM</p>
@@ -1109,6 +1128,7 @@
 
     <!-- ==================== DAY 5 ==================== -->
     <div class="section" id="day5">
+      <img class="day-hero-img" src="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Kedarnath_trek.jpg&width=900" alt="Kedarnath Trek" loading="lazy">
       <div class="day-header">
         <h2>Day 5 | Apr 22 (Wed) | KEDARNATH Trek Up - Opening Day - HARDEST DAY</h2>
         <p class="day-meta">Trek: <strong>16 km up</strong> &nbsp;&middot;&nbsp; Elevation gain: ~1,600 m &nbsp;&middot;&nbsp; Summit: 3,583 m &nbsp;&middot;&nbsp; Wake up: <strong>3:30-4:00 AM</strong></p>
@@ -1170,6 +1190,7 @@
 
     <!-- ==================== DAY 6 ==================== -->
     <div class="section" id="day6">
+      <img class="day-hero-img" src="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Kedarnath_Temple.jpg&width=900" alt="Kedarnath Temple" loading="lazy">
       <div class="day-header">
         <h2>Day 6 | Apr 23 (Thu) | KEDARNATH Darshan + Trek Down</h2>
         <p class="day-meta">Trek down: <strong>16 km</strong> &nbsp;&middot;&nbsp; 4-5 hrs walking &nbsp;&middot;&nbsp; Wake up: <strong>4:00-4:30 AM</strong></p>
@@ -1204,6 +1225,7 @@
 
     <!-- ==================== DAY 7 ==================== -->
     <div class="section" id="day7">
+      <img class="day-hero-img" src="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Chopta,_Uttarakhand.jpg&width=900" alt="Chopta meadows en route to Badrinath" loading="lazy">
       <div class="day-header">
         <h2>Day 7 | Apr 24 (Fri) | Sitapur/Phata &rarr; BADRINATH - Opening Day</h2>
         <p class="day-meta">Distance: <strong>210 km</strong> via Chopta &nbsp;&middot;&nbsp; 8-9 hrs &nbsp;&middot;&nbsp; Wake up: 6:00 AM</p>
@@ -1245,6 +1267,7 @@
 
     <!-- ==================== DAY 8 ==================== -->
     <div class="section" id="day8">
+      <img class="day-hero-img" src="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Badrinath_Temple,_Uttarakhand.jpg&width=900" alt="Badrinath Temple" loading="lazy">
       <div class="day-header">
         <h2>Day 8 | Apr 25 (Sat) | Badrinath Darshan + Mana &rarr; Rudraprayag</h2>
         <p class="day-meta">Drive: <strong>~160 km</strong> &nbsp;&middot;&nbsp; 5-6 hrs &nbsp;&middot;&nbsp; Wake up: <strong>5:00 AM</strong></p>
@@ -1287,6 +1310,7 @@
 
     <!-- ==================== DAY 9 ==================== -->
     <div class="section" id="day9">
+      <img class="day-hero-img" src="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Rishikesh.jpg&width=900" alt="Rishikesh - en route to Dehradun" loading="lazy">
       <div class="day-header">
         <h2>Day 9 | Apr 26 (Sun) | Rudraprayag &rarr; Dehradun Airport - YATRA COMPLETE</h2>
         <p class="day-meta">Distance: <strong>180 km</strong> &nbsp;&middot;&nbsp; 5-6 hrs &nbsp;&middot;&nbsp; Wake up: <strong>4:30 AM</strong> &nbsp;&middot;&nbsp; Flight: 5:20 PM</p>
