@@ -745,6 +745,28 @@
       padding: 8px 10px;
     }
   }
+
+  .place-img {
+    width: 100%;
+    border-radius: 10px;
+    margin: 12px 0;
+    object-fit: cover;
+    max-height: 280px;
+    border: 1px solid var(--border);
+  }
+
+  .temple-card .place-img {
+    max-height: 200px;
+    margin: 8px 0 12px;
+  }
+
+  .img-caption {
+    font-size: 11px;
+    color: var(--text-dim);
+    text-align: center;
+    margin-top: -8px;
+    margin-bottom: 10px;
+  }
 </style>
 </head>
 <body>
@@ -1028,6 +1050,8 @@
         </table>
 
         <h2>Route Highlights</h2>
+        <img class="place-img" src="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Harsil_Valley.jpg&width=800" alt="Harsil Valley, Uttarakhand" loading="lazy">
+        <div class="img-caption">Harsil Valley - one of the most stunning stretches in Garhwal</div>
         <ul>
           <li><strong>Harsil Valley</strong>: One of the most stunning stretches in Garhwal (Uttarkashi-Gangotri)</li>
           <li><strong>Gangotri</strong>: Walk-in temple, no trek needed - accessible by road</li>
@@ -1242,7 +1266,11 @@
           <tr><td>5:00 AM</td><td>Wake up. <strong>Tapt Kund</strong> dip</td></tr>
           <tr><td>5:30 AM</td><td><strong>BADRINATH DARSHAN</strong></td></tr>
           <tr><td>7:30 AM</td><td>Breakfast</td></tr>
-          <tr><td>8:00 AM</td><td><strong>Mana Village</strong> (3 km from Badrinath)</td></tr>
+          <tr><td>8:00 AM</td><td><strong>Mana Village</strong> (3 km from Badrinath) - last village of India</td></tr>
+        </table>
+        <img class="place-img" src="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Mana_Village.jpg&width=800" alt="Mana Village - Last village of India" loading="lazy">
+        <div class="img-caption">Mana Village - India's last inhabited village before Tibet</div>
+        <table>
           <tr><td></td><td><strong>Vyas Gufa</strong> - cave where Vedas were composed</td></tr>
           <tr><td></td><td><strong>Bhim Pul</strong> - natural rock bridge</td></tr>
           <tr><td></td><td><strong>Saraswati River</strong> origin</td></tr>
@@ -1281,6 +1309,10 @@
           <tr><td><strong>5:30 AM</strong></td><td>Depart Rudraprayag. No delays</td></tr>
           <tr><td>7:00 AM</td><td>Srinagar Garhwal area</td></tr>
           <tr><td>8:00 AM</td><td><strong>Devprayag</strong> - Panch Prayag #5 (Alaknanda + Bhagirathi = THE GANGA). <strong>5-min photo stop ONLY if ahead of schedule</strong></td></tr>
+        </table>
+        <img class="place-img" src="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/DevPrayag.jpg&width=800" alt="Devprayag - birth of the Ganga" loading="lazy">
+        <div class="img-caption">Devprayag - where Alaknanda and Bhagirathi merge to become the Ganga</div>
+        <table>
           <tr><td>9:30-10:00 AM</td><td>Rishikesh. Quick chai/lunch break (15-20 min max)</td></tr>
           <tr><td>11:00-11:30 AM</td><td><strong>Arrive Dehradun / Jolly Grant Airport area</strong></td></tr>
           <tr><td>11:30 AM-3:00 PM</td><td>Buffer time. Lunch in Dehradun. Relax. You made it</td></tr>
@@ -1315,6 +1347,7 @@
         <div class="temple-card" id="temple-yamunotri">
           <div class="temple-dham-label">Dham 1</div>
           <h3>Yamunotri</h3>
+          <img class="place-img" src="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Yamunotri_Temple.jpg&width=800" alt="Yamunotri Temple" loading="lazy">
           <div class="temple-quote">Source of the sacred Yamuna River</div>
           <div class="temple-meta">
             <span class="tag">Goddess Yamuna</span>
@@ -1341,6 +1374,7 @@
         <div class="temple-card" id="temple-gangotri">
           <div class="temple-dham-label">Dham 2</div>
           <h3>Gangotri</h3>
+          <img class="place-img" src="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Gangotri_Temple_WTK20150915-DSC_0087.jpg&width=800" alt="Gangotri Temple" loading="lazy">
           <div class="temple-quote">Where the holy Ganga first touched Earth</div>
           <div class="temple-meta">
             <span class="tag">Goddess Ganga</span>
@@ -1365,6 +1399,7 @@
         <div class="temple-card" id="temple-kedarnath">
           <div class="temple-dham-label">Dham 3 - Jyotirlinga</div>
           <h3>Kedarnath</h3>
+          <img class="place-img" src="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Kedarnath_Temple.jpg&width=800" alt="Kedarnath Temple with snow peaks" loading="lazy">
           <div class="temple-quote">One of the 12 Jyotirlingas of Lord Shiva</div>
           <div class="temple-meta">
             <span class="tag">Lord Shiva</span>
@@ -1398,6 +1433,7 @@
         <div class="temple-card" id="temple-badrinath">
           <div class="temple-dham-label">Dham 4 - Divya Desam</div>
           <h3>Badrinath</h3>
+          <img class="place-img" src="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Badrinath_Temple,_Uttarakhand.jpg&width=800" alt="Badrinath Temple with Neelkanth Peak" loading="lazy">
           <div class="temple-quote">The abode of Lord Vishnu, between Nar and Narayan peaks</div>
           <div class="temple-meta">
             <span class="tag">Lord Vishnu</span>
