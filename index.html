@@ -270,7 +270,7 @@ a { color: var(--accent); }
         </div>
         <div class="stage-row reveal stagger">
             <div class="stage-card ab"><div class="num" style="color:var(--amber)">01</div><h3>Preprocess</h3><p>Deskew, contrast enhance, denoise, resize (4MP cap). Runs in asyncio.to_thread() to avoid blocking the event loop.</p></div>
-            <div class="stage-card"><div class="num">02</div><h3>OCR Extract</h3><p>Claude Vision with tool_use (~15% malformed -> &lt;1%). SHA256 content-addressed cache. Tesseract fallback via circuit breaker.</p></div>
+            <div class="stage-card"><div class="num">02</div><h3>OCR Extract</h3><p>Claude Vision with tool_use (~15% malformed -> &lt;1%). SHA256 content-addressed cache. Gemini Flash fallback via circuit breaker (~$0.003/receipt).</p></div>
             <div class="stage-card cb"><div class="num" style="color:var(--cyan)">03</div><h3>Cross-Validate</h3><p>PaddleOCR as second reader. Asymmetric trust: can flag Claude but can't override. Fail-open if PaddleOCR crashes.</p></div>
             <div class="stage-card gb"><div class="num" style="color:var(--green)">04</div><h3>Validate</h3><p>Math check: qty x price = total? Line sum = receipt total? Flags hallucinations, duplicates, future dates.</p></div>
             <div class="stage-card pb"><div class="num" style="color:var(--purple)">05</div><h3>Normalize</h3><p>Units to metric. Currency to EUR (8 currencies). Pack sizes to per-unit. Comma decimals to dot.</p></div>
@@ -387,7 +387,7 @@ matched the normalizer's conversion table</div>
             <div style="display:flex;flex-direction:column;gap:var(--element-gap)">
                 <div class="detail-card">
                     <h3><span class="red">Circuit Breaker + Run Guard</span></h3>
-                    <p>3 consecutive API failures -> Tesseract fallback. Half-open retry after 60s. Also: if &gt;50% of receipts fail OCR, abort run with exit 3 (bad data in = bad data out). Output truncation detected via token count check.</p>
+                    <p>3 consecutive API failures -> Gemini Flash fallback (~10x cheaper). Half-open retry after 60s. Also: if &gt;50% of receipts fail OCR, abort run with exit 3 (bad data in = bad data out). Output truncation detected via token count check.</p>
                 </div>
                 <div class="detail-card">
                     <h3><span class="amber">Rate Limiter</span></h3>
@@ -441,8 +441,12 @@ matched the normalizer's conversion table</div>
                     <a href="gallery.html" style="font-family:var(--font-mono);font-size:var(--small-size)" target="_blank">View Validation Gallery -></a>
                 </div>
                 <div class="detail-card" style="border-left:3px solid var(--amber)">
-                    <h3 class="amber">Honest Limitations</h3>
-                    <p>Claude Sonnet at ~$0.02-0.06/receipt ($2-3/mo for 100 receipts). Gemini Flash would be ~10x cheaper ($0.20/mo) - worth benchmarking for production. Static currency rates. No auto-learning. 22-ingredient cap (10k+ SKUs need embeddings). If starting over: Postgres from day 1, Gemini cost comparison from day 1.</p>
+                    <h3 class="amber">Existing Solution Benchmarks</h3>
+                    <p style="margin-bottom:6px"><strong>Veryfi</strong> (~90-95%, $0.08-0.12/receipt) | <strong>Mindee</strong> (~85-92%, $0.04-0.08) | <strong>Taggun</strong> (~80-88%, $0.03-0.06) | <strong>Ours</strong> (~79% mapping, $0.03 Claude / $0.003 Gemini). Commercial APIs stop at extraction - they don't map, normalize, calculate COGS, or generate menu-level reports.</p>
+                </div>
+                <div class="detail-card" style="border-left:3px solid var(--red)">
+                    <h3 class="red">Honest Limitations</h3>
+                    <p>Claude Sonnet at ~$0.03/receipt. Gemini Flash fallback at ~$0.003/receipt (10x cheaper, implemented). Static currency rates. No auto-learning. 22-ingredient cap (10k+ SKUs need embeddings). If starting over: Postgres from day 1.</p>
                 </div>
                 <div class="detail-card" style="border-left:3px solid var(--purple)">
                     <h3 class="purple">Guiding Principle</h3>

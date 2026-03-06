@@ -660,7 +660,7 @@ footer a:hover { text-decoration: underline; }
       <div class="rw-info">
         <div class="rw-title">Faded Thermal Print</div>
         <div class="rw-desc">Old thermal receipt where ink has faded significantly - common after 2-3 months in a drawer</div>
-        <div class="rw-handling"><span class="rw-label">How we handle it:</span> Claude Vision compensates with context clues. Tesseract fails below 0.60 confidence on these.</div>
+        <div class="rw-handling"><span class="rw-label">How we handle it:</span> Claude Vision compensates with context clues. Traditional OCR fails below 0.60 confidence on these.</div>
       </div>
     </div><div class="rw-card">
       <div class="rw-image">
@@ -669,7 +669,7 @@ footer a:hover { text-decoration: underline; }
       <div class="rw-info">
         <div class="rw-title">Tilted Phone Capture</div>
         <div class="rw-desc">Receipt photographed at an angle on a cluttered desk - the most common real-world scenario</div>
-        <div class="rw-handling"><span class="rw-label">How we handle it:</span> Vision model handles up to ~15 deg rotation natively. Tesseract needs deskew preprocessing.</div>
+        <div class="rw-handling"><span class="rw-label">How we handle it:</span> Vision model handles up to ~15 deg rotation natively. Traditional OCR needs deskew preprocessing.</div>
       </div>
     </div><div class="rw-card">
       <div class="rw-image">
@@ -696,7 +696,7 @@ footer a:hover { text-decoration: underline; }
       <div class="rw-info">
         <div class="rw-title">Crumpled & Smoothed</div>
         <div class="rw-desc">Receipt that was balled up and then flattened - wrinkle shadows create false edges</div>
-        <div class="rw-handling"><span class="rw-label">How we handle it:</span> Wrinkle artifacts cause Tesseract to hallucinate characters. Vision model handles this well.</div>
+        <div class="rw-handling"><span class="rw-label">How we handle it:</span> Wrinkle artifacts cause traditional OCR to hallucinate characters. Vision model handles this well.</div>
       </div>
     </div><div class="rw-card">
       <div class="rw-image">
