@@ -238,12 +238,12 @@ a { color: var(--accent); }
         <h1 class="reveal" style="margin-bottom:var(--element-gap)">From messy receipts<br>to <span class="accent">menu item costs</span></h1>
         <p class="reveal" style="max-width:700px;font-size:clamp(0.85rem,1.6vw,1.15rem);margin-bottom:var(--content-gap)">A cafe owner has a stack of supplier invoices. A 5% COGS error across 12 menu items costs up to <span class="amber">EUR 43,800/year</span>. This pipeline automates cost calculation from raw receipt images - and tells the owner <em>when to trust the numbers</em>.</p>
         <div class="stats-row reveal stagger">
-            <div class="stat-card"><div class="stat-value accent">100</div><div class="stat-label">Receipts</div></div>
-            <div class="stat-card"><div class="stat-value green">318</div><div class="stat-label">Line Items</div></div>
-            <div class="stat-card"><div class="stat-value" style="color:var(--cyan)">96.7%</div><div class="stat-label">OCR Confidence</div></div>
-            <div class="stat-card"><div class="stat-value amber">94.9%</div><div class="stat-label">Mapping Rate</div></div>
-            <div class="stat-card"><div class="stat-value purple">340</div><div class="stat-label">Tests (unit, e2e, adversarial)</div></div>
-            <div class="stat-card"><div class="stat-value" style="color:var(--red)">~4s</div><div class="stat-label">Per Receipt (async)</div></div>
+            <div class="stat-card"><div class="stat-value accent">40</div><div class="stat-label">Real Receipts</div></div>
+            <div class="stat-card"><div class="stat-value green">123</div><div class="stat-label">Line Items</div></div>
+            <div class="stat-card"><div class="stat-value" style="color:var(--cyan)">89.6%</div><div class="stat-label">OCR Confidence</div></div>
+            <div class="stat-card"><div class="stat-value amber">72.7%</div><div class="stat-label">Pipeline Score</div></div>
+            <div class="stat-card"><div class="stat-value purple">21</div><div class="stat-label">Ingredients Mapped</div></div>
+            <div class="stat-card"><div class="stat-value" style="color:var(--red)">~0.5s</div><div class="stat-label">Per Receipt (cached)</div></div>
         </div>
     </div>
     <div class="slide-number">01 / 06</div>
@@ -342,34 +342,34 @@ matched the normalizer's conversion table</div>
         <h2 class="reveal">What Each Metric Means</h2>
         <div class="metric-row reveal stagger">
             <div class="metric-box">
-                <div class="metric-head"><div class="metric-name">OCR Confidence</div><div class="metric-val vg">96.7%</div></div>
-                <p>How certain Claude Vision is about each extracted field. Weighted average across all 318 line items. Low-confidence items get flagged for manual review.</p>
-                <div class="formula">high = 0.95 | medium = 0.80 | low = 0.60</div>
+                <div class="metric-head"><div class="metric-name">Pipeline Score</div><div class="metric-val va">72.7%</div></div>
+                <p>Composite score: 25% mapping F1 + 15% classification + 50% cost accuracy + 10% crash rate. Cost-heavy weighting reflects real-world COGS priority.</p>
+                <div class="formula">0.25*F1 + 0.15*class + 0.50*cost + 0.10*no_crash</div>
             </div>
             <div class="metric-box">
-                <div class="metric-head"><div class="metric-name">Mapping Rate</div><div class="metric-val vg">94.9%</div></div>
-                <p>% of line items matched to a known ingredient. The 5.1% unmapped aren't failures - they're discounts, delivery fees, and cleaning supplies, correctly excluded from COGS.</p>
+                <div class="metric-head"><div class="metric-name">Mapping F1</div><div class="metric-val vg">1.000</div></div>
+                <p>Perfect precision and recall on 30 ground-truth-matched items. 66 real-world descriptions unmatched in ground truth (real variety exceeds synthetic coverage).</p>
                 <div class="formula">overrides > fuzzy(85) > LLM batch > null</div>
             </div>
             <div class="metric-box">
-                <div class="metric-head"><div class="metric-name">Avg Margin</div><div class="metric-val vb">73.7%</div></div>
-                <p>Profit after COGS, averaged across 12 menu items. Cafe target: 65-75%. Items below 60% flagged for price review (Butter Croissant: 59.6%).</p>
-                <div class="formula">margin = (sell - cogs) / sell * 100</div>
+                <div class="metric-head"><div class="metric-name">Classification</div><div class="metric-val vg">100%</div></div>
+                <p>34/34 items correctly classified as ingredient, packaging, or exclude. Keyword + fuzzy fallback handles multilingual and OCR-noisy descriptions.</p>
+                <div class="formula">ingredient | packaging | exclude | unknown</div>
             </div>
             <div class="metric-box">
-                <div class="metric-head"><div class="metric-name">Item Confidence</div><div class="metric-val va">0.86-0.95</div></div>
-                <p>Capped at 0.95 - the system never claims certainty. Before CV penalty, all scores clustered in a useless 0.90-0.95 band. Adding CV>30% penalty finally separated volatile items (Berry Smoothie: 0.86) from stable ones (Espresso: 0.90).</p>
-                <div class="formula">conf = min(0.95, ocr * map * vol) | CV>30%: *0.85</div>
+                <div class="metric-head"><div class="metric-name">Cost Accuracy</div><div class="metric-val vr">45.5%</div></div>
+                <p>10/22 ingredients within tolerance of expected cost. Real supplier prices diverge from synthetic expectations. Cups, salt, muffins show largest deviations.</p>
+                <div class="formula">count(|actual - expected| <= tolerance) / total</div>
             </div>
             <div class="metric-box">
-                <div class="metric-head"><div class="metric-name">COGS</div><div class="metric-val vb">EUR 0.41-2.13</div></div>
-                <p>Total cost per menu item. Weighted average after IQR outlier removal (k=1.5). A EUR 0.10 error on 50 daily sales = EUR 150/month lost margin.</p>
-                <div class="formula">IQR fence: Q1 - 1.5*IQR .. Q3 + 1.5*IQR</div>
+                <div class="metric-head"><div class="metric-name">OCR Confidence</div><div class="metric-val va">89.6%</div></div>
+                <p>Weighted average certainty across 123 line items from 40 real supplier receipts. Lower than synthetic (96.7%) due to real-world image quality variance.</p>
+                <div class="formula">high = 0.95 | medium = 0.80 | low = 0.60</div>
             </div>
             <div class="metric-box">
-                <div class="metric-head"><div class="metric-name">Sensitivity (95% CI)</div><div class="metric-val va">&plusmn;1.96 SD</div></div>
-                <p>How much margins swing if costs shift. Berry Smoothie worst case: 50.2%. Espresso barely moves. Tells the owner which items to watch.</p>
-                <div class="formula">95% CI = cogs &plusmn; 1.96 * std_dev</div>
+                <div class="metric-head"><div class="metric-name">Crash Rate</div><div class="metric-val vg">0%</div></div>
+                <p>Zero failures across all 40 receipts. Pipeline processes gracefully even with OCR noise, multilingual text, and malformed line items.</p>
+                <div class="formula">failed_receipts / total_receipts = 0/40</div>
             </div>
         </div>
     </div>
@@ -426,18 +426,18 @@ matched the normalizer's conversion table</div>
         <h2 class="reveal">How It Evolved</h2>
         <div class="two-col reveal">
             <div class="timeline stagger">
-                <div class="timeline-item"><div class="timeline-ver vr">V1</div><div class="timeline-text"><strong>Raw OCR - garbage in.</strong> Tesseract priced a latte at EUR28k. Claude hallucinated "Bananas" for "Lemons." <em>Insight: OCR is an LLM problem, not regex. And LLMs must be told it's OK to say "I don't know."</em></div></div>
-                <div class="timeline-item"><div class="timeline-ver vbl">V2</div><div class="timeline-text"><strong>Structured extraction.</strong> tool_use dropped malformed output from ~15% to &lt;1%. Confidence-gating killed false positive mappings. <em>Insight: tool_use guarantees structure, not semantics. Every path still needs validation.</em></div></div>
-                <div class="timeline-item"><div class="timeline-ver vgr">V3</div><div class="timeline-text"><strong>Production hardening.</strong> EU number parsing ("3,50" vs "1,500" vs "0,750"), circuit breaker, TOCTOU cost guard, validation parity. <em>Insight: number parsing is never done. 5 formats, regex disambiguation.</em></div></div>
+                <div class="timeline-item"><div class="timeline-ver vgr">V1</div><div class="timeline-text"><strong>Synthetic data: 98.1% score.</strong> 100 synthetic receipts, near-perfect mapping and classification. <em>Insight: synthetic scores are misleading - the pipeline hadn't seen real supplier invoice formats.</em></div></div>
+                <div class="timeline-item"><div class="timeline-ver vr">V2</div><div class="timeline-text"><strong>Real data crash.</strong> Pack sizes not normalized ("box/24" vs "boxes/24"). Embedded units ignored when OCR returned weight units. <em>Insight: fixed plural regex + extended embedded unit extraction for mass/volume units.</em></div></div>
+                <div class="timeline-item"><div class="timeline-ver vbl">V3</div><div class="timeline-text"><strong>Real data tuned: 72.7%.</strong> Mapping perfect but cost accuracy 45.5% - real prices diverge from synthetic expectations. <em>Insight: rebalanced scoring to weight cost accuracy at 50%. Honest score reflects real-world complexity.</em></div></div>
             </div>
             <div style="display:flex;flex-direction:column;gap:var(--element-gap)">
                 <div class="detail-card" style="border-left:3px solid var(--green)">
                     <h3 class="green">Results -> Decisions</h3>
-                    <p>Espresso: 83.6% margin (stable, high confidence - no action). Butter Croissant: 59.6% (below 65% target - flagged for price review). Berry Smoothie: widest CI, volatile costs - watch this one. Each number includes confidence so the owner knows what to trust.</p>
+                    <p>Coffee beans: within tolerance (EUR 0.021/g vs 0.020 expected). Paper cups: 2x expected price - supplier negotiation needed. Muffins: 65% over expected - verify with more data points. Each ingredient includes confidence so the owner knows what to trust.</p>
                 </div>
                 <div class="detail-card" style="border-left:3px solid var(--accent)">
-                    <h3 class="accent">Ground Truth Validation</h3>
-                    <p style="margin-bottom:6px">17 receipts hand-verified: image vs extraction side-by-side. Every field spot-checked - prices, quantities, units, tax flags. Confidence scores are self-reported; this gallery is the external proof they're trustworthy.</p>
+                    <h3 class="accent">Real Data Validation</h3>
+                    <p style="margin-bottom:6px">40 real supplier receipts evaluated. 30/30 mappings correct, 34/34 classifications correct. Cost accuracy limited by real-world price variance vs synthetic ground truth (10/22 within tolerance).</p>
                     <a href="gallery.html" style="font-family:var(--font-mono);font-size:var(--small-size)" target="_blank">View Validation Gallery -></a>
                 </div>
                 <div class="detail-card" style="border-left:3px solid var(--amber)">
@@ -446,7 +446,7 @@ matched the normalizer's conversion table</div>
                 </div>
                 <div class="detail-card" style="border-left:3px solid var(--purple)">
                     <h3 class="purple">Guiding Principle</h3>
-                    <p>Validation parity: every path a receipt can take must be tested, not just the happy path. 340 tests: normalizer edge cases (comma decimals, pack sizes), full pipeline e2e, adversarial prompts, malformed images. ruff clean, 0 warnings. False confidence is worse than honest gaps.</p>
+                    <p>Validation parity: every path a receipt can take must be tested, not just the happy path. Tested on both synthetic (98.1%) and real data (72.7%). The gap is the honest measure. False confidence is worse than honest gaps.</p>
                 </div>
             </div>
         </div>
